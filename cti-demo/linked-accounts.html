@@ -55,13 +55,15 @@ rcDemo = new rcDemo(rcPgCfgGen, rcPgCfgPg);
 var rcsdk = rcDemo.Core.rcSdk;
 var rcCallWin = new rcCallWinMgr();
 
-function Auth3l(rcsdk) {
+function Auth3l(rcDemo) {
     var t=this;
-    t.rcSdk = rcsdk;
-    t.redirectUri;
+    t.rcDemo = rcDemo;
+    //t.rcSdk = rcsdk;
+    //t.redirectUri;
     t.authorize = function() {
-        var urltoopen = t.rcSdk.getPlatform().getAuthURL({
-            redirect_uri: t.redirectUri
+        var appInfo = t.rcDemo.Core.getAppInfo();
+        var urltoopen = t.rcDemo.Core.rcSdk.getPlatform().getAuthURL({
+            redirect_uri: appInfo['rcAppRedirectUri']
         })
         $.oauthpopup({
             path: urltoopen,
@@ -76,9 +78,9 @@ function Auth3l(rcsdk) {
 $(function() {
     rcDemo.init();
     rcDemo.Auth.init();
-        var appInfo = rcDemo.Core.getAppInfo();
-        console.log('APPINFO LISTEN ' + JSON.stringify(appInfo));
-    rcDemo.Auth3l = new Auth3l(rcDemo.Core.rcSdk);
+    var appInfo = rcDemo.Core.getAppInfo();
+    console.log('APPINFO LISTEN ' + JSON.stringify(appInfo));
+    rcDemo.Auth3l = new Auth3l(rcDemo);
     rcDemo.Core.rcSdk.getPlatform().isAuthorized()
         .then(function () {
             rcCallWin.rcSdk = rcDemo.Core.rcSdk;
