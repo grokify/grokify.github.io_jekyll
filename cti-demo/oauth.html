@@ -54,7 +54,7 @@ function processOAuthRedirect(rcDemo) {
             .then(function(response) {
                 rcDemo.Auth.setAuthData(response.json);
                 window.open('', '_self', ''); 
-                window.close(); 
+                //window.close(); 
             }).catch(function(e) {
                 document.write("AUTHZ_ERR")
             });
