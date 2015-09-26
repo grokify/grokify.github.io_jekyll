@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <title>RingCentral CTI Demo</title>
-    <link href="http://www.ringcentral.com/content/dam/ringcentral/images/favicon.ico" type="image/vnd.microsoft.icon" rel="shortcut icon">
-    <link href="http://www.ringcentral.com/content/dam/ringcentral/images/favicon.ico" type="image/vnd.microsoft.icon" rel="icon">
+    <link href="./images/favicon.ico" type="image/vnd.microsoft.icon" rel="shortcut icon">
+    <link href="./images/favicon.ico" type="image/vnd.microsoft.icon" rel="icon">
 
     <!-- Demo Prereqs -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -43,27 +43,18 @@ var rcCallLog = new rcDemoCallLog();
 $(function() {
     rcDemo.init();
     rcCallLog.rcSdk = rcDemo.Core.rcSdk;
-    rcCallLog.populateRecords();
-    rcCallWin.rcSdk = rcDemo.Core.rcSdk;
-    rcCallWin.subscriptionStart();
+    rcDemo.Core.rcSdk.getPlatform().isAuthorized()
+        .then(function () {
+            rcCallLog.populateRecords();
+            rcCallWin.rcSdk = rcDemo.Core.rcSdk;
+            rcCallWin.startSubscription();  
+        }).catch(function (e) {
+            $('#appMessage').show();
+        })
+    $(window).unload(function() {
+        rcCallWin.endSubscription();  
+    });
 });
-
-
-/*
-rcDemo = new rcDemo(rcPgCfgGen, rcPgCfgPg);
-var rcsdk = rcDemo.Core.rcSdk;
-var rcCallWin = new rcCallWinMgr();
-var rcCallLog = new rcDemoCallLog();
-
-$(function() {
-    rcDemo.init();
-    rcCallWin.rcSdk = rcDemo.Core.rcSdk;
-    rcCallWin.subscriptionStart();
-    //rcCallLog.setRcDemoCore(rcDemo.Core);
-    rcCallLog.rcSdk = rcDemo.Core.rcSdk;
-    rcCallLog.populateRecords();
-});
-*/
 
     </script>
   </head>
@@ -105,6 +96,14 @@ $(function() {
       </div>
     </div>
 
+    <div id="appMessage" class="container theme-showcase" role="main" style="display:none">
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <div class="alert alert-warning" role="alert"><i class="fa fa-exclamation-triangle"></i> Note: you need to <a href="./linked-accounts.html">link your RingCentral account</a> before you use interated RingCentral communications and data functionality.</div>
+        </div>
+      </div>
+    </div>
+
     <div class="container theme-showcase" role="main">
       <div class="row">
         <div class="col-sm-12">
@@ -131,9 +130,28 @@ $(function() {
     <div class="container theme-showcase" role="main">
       <div class="row">
         <div class="col-sm-12">
+          <div class="panel panel-success">
+            <div class="panel-heading">
+              <h3 class="panel-title">Demo Instructions</h3>
+            </div>
+            <div class="panel-body">
+              <ol>
+                <li>Ensure that you have Configured this demo app and authorized it to access your RingCentral account.</li>
+                <li>Note that the icons in the left most column indicate inbound or outbound call.</li>
+                <li>Optionally play and/or download a HTML5 recording if present. If no recordings are available, you can make one by placing a call via the RingCentral for Desktop softphone under the <a href="./contacts.html">Contacts page</a> and then clicking the record button.</li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container theme-showcase" role="main">
+      <div class="row">
+        <div class="col-sm-12">
           <div class="panel panel-primary">
             <div class="panel-heading">
-              <h3 class="panel-title">Instructions &amp; Code</h3>
+              <h3 class="panel-title">Developer Instructions</h3>
             </div>
             <div class="panel-body">
 
@@ -286,16 +304,22 @@ var recordingEl = $('&lt;audio&gt;').attr('controls', 'controls').append(
       </td>
     </tr>
     <tr>
+      <td colspan="2">
+        <p>OAuth 2.0 Redirect URI:</p>
+        <input type="text" id="rcAppRedirectUri" class="form-control" value="" placeholder="Redirect URI, e.g. http://grokify.github.com/cti-demo/oauth.html" />
+      </td>
+    </tr>
+    <tr class="rcDemoCfgAuth2L">
       <td colspan="2"><hr>
         <p style="font-weight:bold">Authorization Information</p>
-        <p>
-          <input type="radio" name="rcAuth" id="rcAuth2L" checked="checked" /> 2-legged OAuth
-          <input type="radio" name="rcAuth" id="rcAuth3L" disabled="disabled" /> 3-legged OAuth
+        <p style="display:none">
+          <input type="radio" name="rcAuth" id="rcAuth3L" disabled="checked" /> 3-legged OAuth
+          <input type="radio" name="rcAuth" id="rcAuth2L" checked="disabled" /> 2-legged OAuth
         </p>
         <p style="font-weight:bold">2-legged OAuth: Default User Information (pre-filled in authorization form)</p>
       </td>
     </tr>
-    <tr>
+    <tr class="rcDemoCfgAuth2L">
       <td style="width:80%;padding-right:1em">
         <div style="clear:both"></div>
         <p>Username:</p>
@@ -306,7 +330,7 @@ var recordingEl = $('&lt;audio&gt;').attr('controls', 'controls').append(
         <input type="text" id="rcUserExtension" class="form-control" value="BB" placeholder="Extension" />
       </td>
     </tr>
-    <tr>
+    <tr class="rcDemoCfgAuth2L">
       <td colspan="2">
         <p>Password:</p>
         <input type="password" id="rcUserPassword" class="form-control" value="" placeholder="Password" />
@@ -322,10 +346,11 @@ var recordingEl = $('&lt;audio&gt;').attr('controls', 'controls').append(
   </table>
 </div><!-- END DEMO CONFIG MODAL BODY -->
 
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="rcDemo.Core.clearInfo()">Clear Demo</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal" onclick="rcDemo.Auth.logoutAndClear()">Clear Demo</button>
         <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="rcDemo.Core.setInfoFromDom()">Save</button>
       </div>
       </form>

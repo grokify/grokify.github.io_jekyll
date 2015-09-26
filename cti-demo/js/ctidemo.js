@@ -6,7 +6,8 @@ var rcPgCfgGen = {
   },
   demoConfig : {
     url: {
-      rcServerSandbox: 'https://platform.devtest.ringcentral.com'
+      rcServerSandbox: 'https://platform.devtest.ringcentral.com',
+      rcOAuthRedirectUri: 'http://localhost:8080/oauth.html'
     },
     model : {
       contacts : {
@@ -48,7 +49,7 @@ function rcDemoCore(rcPgCfgGen, rcPgCfgPg) {
     var t=this;
     t.lsKeyApp  = 'rcAppInfo';
     t.lsKeyUser = 'rcUsrInfo';
-    t.lsAppFields  = ['rcAppKey', 'rcAppSecret'];
+    t.lsAppFields  = ['rcAppKey', 'rcAppSecret','rcAppRedirectUri'];
     t.lsUserFields = ['rcUserUsername', 'rcUserExtension', 'rcUserPassword'];
     t.rcPgCfgGen = rcPgCfgGen;
     t.rcPgCfgPg = rcPgCfgPg;
@@ -67,16 +68,10 @@ function rcDemoCore(rcPgCfgGen, rcPgCfgPg) {
         if (appInfo == null) {
             return;
         }
-        var json = JSON.stringify(appInfo);
-        console.log('POP ' + json);
-        console.log('POP_KEY ' + appInfo['rcAppKey']);
-        console.log('RC_APP_KEY1 ' + $('#rcAppKey').val());
-        $('#rcAppKey').val(appInfo['rcAppKey']);
-        $('#rcAppSecret').val(appInfo['rcAppSecret']);   
-        console.log('RC_APP_KEY2 ' + $('#rcAppSecret').val());
         var fields = t.lsAppFields;
         for (var i=0,l=fields.length;i<l;i++) {
-            $('#' + fields[i]).val(appInfo[fields[i]]);
+            var name = fields[i];
+            $('#' + name).val(appInfo[name]);
         }
     }
     t.populateDomUser = function() {
@@ -98,9 +93,7 @@ function rcDemoCore(rcPgCfgGen, rcPgCfgPg) {
             $('#rcAuthPassword').val(userInfo['rcUserPassword']);
         }
     }
-    t.populateDomToken = function() {
-
-    }
+    t.populateDomToken = function() {}
     t.getAppInfo = function() {
         var appInfo = {};
         var json = window.localStorage.getItem(t.lsKeyApp);
@@ -144,7 +137,7 @@ function rcDemoCore(rcPgCfgGen, rcPgCfgPg) {
             appInfo['server'] = t.rcServerSandbox();
         }
         var json = JSON.stringify(appInfo);
-        console.log('SET_APP_INFO ' + json);
+        //console.log('SET_APP_INFO ' + json);
         window.localStorage.setItem(t.lsKeyApp, JSON.stringify(appInfo));
         t.populateDomApp();
         t.setRcSdk(appInfo);
@@ -152,7 +145,7 @@ function rcDemoCore(rcPgCfgGen, rcPgCfgPg) {
     t.setUserInfo = function(userInfo) {
         userInfo = (typeof userInfo !== 'undefined' && userInfo != null) ? userInfo : {};
         var json = JSON.stringify(userInfo);
-        console.log('SET_USER_INFO ' + json);
+        //console.log('SET_USER_INFO ' + json);
         window.localStorage.setItem(t.lsKeyUser, JSON.stringify(userInfo));
         t.populateDomUser();
     }
@@ -164,11 +157,11 @@ function rcDemoCore(rcPgCfgGen, rcPgCfgPg) {
         });
     }
     t.setInfoFromDom = function() {
-        console.log('setInfoFromDom_S1');
+        //console.log('setInfoFromDom_S1');
         t.setAppInfoFromDom();
-        console.log('setInfoFromDom_S2');
+        //console.log('setInfoFromDom_S2');
         t.setUserInfoFromDom();
-        console.log('setInfoFromDom_SZ');
+        //console.log('setInfoFromDom_SZ');
     }
     t.setAppInfoFromDom = function() {
         var appInfo = t.getAppInfo();
@@ -177,19 +170,19 @@ function rcDemoCore(rcPgCfgGen, rcPgCfgPg) {
             appInfo[fields[i]] = $('#' + fields[i]).val();
         }
         var json = JSON.stringify(appInfo);
-        console.log("SET_APP_INFO_DOM_Z " + json);
+        //console.log("SET_APP_INFO_DOM_Z " + json);
         t.setAppInfo(appInfo);
     }
     t.setUserInfoFromDom = function() {
         var userInfo = t.getUserInfo();
         var fields = t.lsUserFields;
         var json = JSON.stringify(userInfo);
-        console.log("SET_USER_INFO_DOM_S1 " + json);
+        //console.log("SET_USER_INFO_DOM_S1 " + json);
         for (var i=0,l=t.lsUserFields.length;i<l;i++) {
             userInfo[fields[i]] = $('#' + fields[i]).val() || '';
         }
         var json2 = JSON.stringify(userInfo);
-        console.log("SET_USER_INFO_DOM_SZ " + json2);
+        //console.log("SET_USER_INFO_DOM_SZ " + json2);
         t.setUserInfo(userInfo);
     }
     t.clearInfo = function() {
@@ -212,8 +205,11 @@ function rcDemoAuth(rcDemoCore) {
     t.lsKeyAuth = 'rcAuthInfo';
     t.rcDemoCore = rcDemoCore;
     t.rcPlatform = t.rcDemoCore.rcSdk.getPlatform();
+    t.debug = false;
     t.init = function() {
+        console.log("INIT_AUTH");
         t.pageAuthPopulate();
+        t.listenAuthData();
     }
     t.fields = [
         {'sto': 'userpath_num', 'dom1': '#token_view_usr', 'dom2': '#rc_act_link_usr'},
@@ -232,6 +228,32 @@ function rcDemoAuth(rcDemoCore) {
     }
     t.setAuthData = function(authData) {
         window.localStorage.setItem(t.lsKeyAuth, JSON.stringify(authData));
+        if ('access_token' in authData && authData['access_token'].length>0) {
+            $('#appMessage').hide();
+        } else {
+            $('#appMessage').show();          
+        }
+    }
+    // http://diveintohtml5.info/storage.html
+    t.listenAuthData = function() {
+        if (window.addEventListener) {
+            window.addEventListener("storage", t.handleAuthData, false);
+        } else {
+            window.attachEvent("onstorage", t.handleAuthData);
+        };
+    }
+    t.handleAuthData = function(e) {
+        console.log("HANDLE_AUTH_DATA");
+        if (!e) { e = window.event; }
+        if (e.key == t.lsKeyAuth) {
+            t.pageAuthPopulate();
+            var authData = t.getAuthData();
+            if ('access_token' in authData && authData['access_token'].length>0) {
+                $('#appMessage').hide();
+            } else {
+                $('#appMessage').show();
+            }
+        }
     }
     t.pageAuthPopulate = function() {
         var authData = t.getAuthData();
@@ -240,7 +262,10 @@ function rcDemoAuth(rcDemoCore) {
           {'sto': 'userpath_num', 'dom1': '#rc_act_link_usr', 'dom2': '#rcLinkUsername'},
           {'sto': 'userpath_ext', 'dom1': '#rc_act_link_ext', 'dom2': '#rcLinkExtension'},
           {'sto': 'access_token', 'dom1': '#rc_act_link_acc', 'dom2': '#rcLinkAccessToken'},
-          {'sto': 'refresh_token', 'domX': '#token_view_ret'}
+          {'sto': 'expires_in', 'dom1': '#rc_act_link_acc', 'dom2': '#rcLinkAccessTokenTtl'},
+          {'sto': 'refresh_token', 'domX': '#token_view_ret', 'dom2': '#rcLinkRefreshToken'},
+          {'sto': 'refresh_token_expires_in', 'dom1': '#rc_act_link_acc', 'dom2': '#rcLinkRefreshTokenTtl'},
+          {'sto': 'scope', 'dom1': '#rc_act_link_acc', 'dom2': '#rcLinkScope'}
         ];
         for (var i=0;i<data.length;i++) {
             var sto = data[i]['sto'];
@@ -288,9 +313,11 @@ function rcDemoAuth(rcDemoCore) {
             extension: extension,
             password: password
         }).then(function(response) {
-            console.log('authz_success');
-            console.log(JSON.stringify(debug));
-            console.log(response.json);
+            if (t.debug) {
+                console.log('authz_success');
+                console.log(JSON.stringify(debug));
+                console.log(response.json);
+            }
             $('#linked_status').html(' - Account Successfully Linked');
             data = response.data;
             data['userpath'] = userpath;
@@ -320,6 +347,10 @@ function rcDemoAuth(rcDemoCore) {
         }
         $('#linked_status').html(' - Account Successfully Unlinked');
         t.pageAuthPopulate();
+    }
+    t.logoutAndClear = function() {
+        t.logout();
+        t.rcDemoCore.clearInfo();
     }
     t.refresh = function() {
         var authData = t.getAuthData();
@@ -558,9 +589,9 @@ function rcDemoSms(rcDemoCore) {
                 text: text
             }
         }).then(function(response) {
-            console.log('SMS Success: ' + response.data.id);
+            console.log('SMS_SEND_Success: ' + response.data.id);
         }).catch(function(e) {
-            console.log('SMS Error: ' + e.message);
+            console.log('SMS_SEND_Error: ' + e.message);
         });
     }
 }
