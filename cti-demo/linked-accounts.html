@@ -62,10 +62,12 @@ function Auth3l(rcDemo) {
     //t.redirectUri;
     t.authorize = function() {
         var appInfo = t.rcDemo.Core.getAppInfo();
-        console.log("REDIRECT_URI " + appInfo['rcAppRedirectUri']);
+        var redirectUri = appInfo['rcAppRedirectUri']
+        console.log("REDIRECT_URI " + redirectUri);
         var urltoopen = t.rcDemo.Core.rcSdk.getPlatform().getAuthURL({
-            redirect_uri: appInfo['rcAppRedirectUri']
+            redirectUri: redirectUri
         })
+        console.log("OAUTH3L_URI " + urltoopen);
         $.oauthpopup({
             path: urltoopen,
             callback: function()
