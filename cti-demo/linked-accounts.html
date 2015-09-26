@@ -62,6 +62,7 @@ function Auth3l(rcDemo) {
     //t.redirectUri;
     t.authorize = function() {
         var appInfo = t.rcDemo.Core.getAppInfo();
+        console.log("REDIRECT_URI " + appInfo['rcAppRedirectUri']);
         var urltoopen = t.rcDemo.Core.rcSdk.getPlatform().getAuthURL({
             redirect_uri: appInfo['rcAppRedirectUri']
         })
