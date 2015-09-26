@@ -76,6 +76,8 @@ function Auth3l(rcsdk) {
 $(function() {
     rcDemo.init();
     rcDemo.Auth.init();
+        var appInfo = rcDemo.Core.getAppInfo();
+        console.log('APPINFO LISTEN ' + JSON.stringify(appInfo));
     rcDemo.Auth3l = new Auth3l(rcDemo.Core.rcSdk);
     rcDemo.Core.rcSdk.getPlatform().isAuthorized()
         .then(function () {
