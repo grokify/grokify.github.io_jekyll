@@ -5,9 +5,9 @@
     <description>Personal blog about product management, engineering, hacking, open-source, startups, etc.</description>
     <link>https://grokify.github.io/</link>
     <atom:link href="https://grokify.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 14 Feb 2016 12:10:33 -0800</pubDate>
-    <lastBuildDate>Sun, 14 Feb 2016 12:10:33 -0800</lastBuildDate>
-    <generator>Jekyll v3.0.3</generator>
+    <pubDate>Sun, 14 Feb 2016 12:29:56 -0800</pubDate>
+    <lastBuildDate>Sun, 14 Feb 2016 12:29:56 -0800</lastBuildDate>
+    <generator>Jekyll v2.0.3</generator>
     
       <item>
         <title>Static Knowledgebase Idea</title>
@@ -38,7 +38,7 @@
         <guid isPermaLink="true">https://grokify.github.io/ideas/static-knowledgebase</guid>
         
         
-        <category>Ideas</category>
+        <category>ideas</category>
         
       </item>
     
@@ -64,13 +64,13 @@
 
 &lt;h2 id=&quot;ruby-sdk&quot;&gt;Ruby SDK&lt;/h2&gt;
 
-&lt;p&gt;The Ruby SDK, &lt;a href=&quot;https://github.com/grokify/glip-poster-ruby&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Glip::Poster&lt;/code&gt;&lt;/a&gt; is designed to have the same interface as other &lt;code class=&quot;highlighter-rouge&quot;&gt;*::Poster&lt;/code&gt; chat SDKs making them interchangeable. It provides an easy to use interface supporting webhook options on a per-message basis and as part of the defaults.&lt;/p&gt;
+&lt;p&gt;The Ruby SDK, &lt;a href=&quot;https://github.com/grokify/glip-poster-ruby&quot;&gt;&lt;code&gt;Glip::Poster&lt;/code&gt;&lt;/a&gt; is designed to have the same interface as other &lt;code&gt;*::Poster&lt;/code&gt; chat SDKs making them interchangeable. It provides an easy to use interface supporting webhook options on a per-message basis and as part of the defaults.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;glip_poster&#39;&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;glip_poster&amp;#39;&lt;/span&gt;
 
-&lt;span class=&quot;n&quot;&gt;poster&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Glip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Poster&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;YOUR_WEBHOOK_URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;poster&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:icon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;http://example.com/icon.png&#39;&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;poster&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;send_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Hi there!&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;span class=&quot;n&quot;&gt;poster&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Glip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Poster&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;YOUR_WEBHOOK_URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;poster&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:icon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;http://example.com/icon.png&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;poster&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;send_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;Hi there!&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;As mentioned above, while Ruby is nice and used by many people, setting up a service to transform event data to Glip’s inbound webhook format requires standing up a server permanently which may not be attractive or possible given the circumstances.&lt;/p&gt;
 
@@ -78,12 +78,12 @@
 
 &lt;p&gt;When thinking of alternative approaches, the thought of creating a Chrome App and an iOS App both came up. When the iOS app was the only viable choice, the &lt;a href=&quot;https://github.com/grokify/glip-sdk-swift&quot;&gt;Glip Swift SDK&lt;/a&gt; was born.&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;glip&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Poster&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;YOUR_WEBHOOK_URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;icon: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://example.com/icon.png&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;glip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;sendMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Hi there!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;glip&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Poster&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;YOUR_WEBHOOK_URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;icon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&amp;quot;http://example.com/icon.png&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;glip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sendMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&amp;quot;Hi there!&amp;quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;sms-to-glip-webhook-example&quot;&gt;SMS to Glip Webhook Example&lt;/h2&gt;
 
-&lt;p&gt;In addition to the SDK libraries themselves, the Ruby SDK includes a sample script &lt;a href=&quot;https://github.com/grokify/ringcentral-sdk-ruby/blob/master/scripts/sms_to_chat.rb&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sms_to_chat.rb&lt;/code&gt;&lt;/a&gt; which runs and demonstrates this in action. As part of the solution, the script subscribes to all inbound extensions and will send an alert to the chat system of choice for new alerts.&lt;/p&gt;
+&lt;p&gt;In addition to the SDK libraries themselves, the Ruby SDK includes a sample script &lt;a href=&quot;https://github.com/grokify/ringcentral-sdk-ruby/blob/master/scripts/sms_to_chat.rb&quot;&gt;&lt;code&gt;sms_to_chat.rb&lt;/code&gt;&lt;/a&gt; which runs and demonstrates this in action. As part of the solution, the script subscribes to all inbound extensions and will send an alert to the chat system of choice for new alerts.&lt;/p&gt;
 
 &lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
 
@@ -123,7 +123,7 @@
         <guid isPermaLink="true">https://grokify.github.io/ideas/readthedocs-slate-integration</guid>
         
         
-        <category>Ideas</category>
+        <category>ideas</category>
         
       </item>
     
@@ -189,9 +189,9 @@
 
 &lt;p&gt;Install AMD Catalyst Display Driver&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;unzip amd-catalyst-13.12-linux-x86.x86_64.zip
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;chmod +x amd-catalyst-13.12-linux-x86.x86_64.run
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;./amd-catalyst-13.12-linux-x86.x86_64.run &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;unzip amd-catalyst-13.12-linux-x86.x86_64.zip
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;chmod +x amd-catalyst-13.12-linux-x86.x86_64.run
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./amd-catalyst-13.12-linux-x86.x86_64.run&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;install-amd-opencl&quot;&gt;Install AMD OpenCL&lt;/h2&gt;
 
@@ -201,19 +201,19 @@
 
 &lt;p&gt;&lt;em&gt;Install CGminer with ADL&lt;/em&gt;&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;unzip ADL_SDK_6.0.zip -d ADL_SDK_6.0
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;wget https://github.com/ckolivas/cgminer/archive/v3.7.2.tar.gz -O cgminer-3.7.2.tgz
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;tar xvfz cgminer-3.7.2.tgz
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;cp -p ADL_SDK_6.0/include/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; cgminer-3.7.2/ADL_SDK/
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;cgminer-3.7.2
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;./autogen.sh --enable-scrypt --enable-opencl
-&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;sudo make install&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;unzip ADL_SDK_6.0.zip -d ADL_SDK_6.0
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;wget https://github.com/ckolivas/cgminer/archive/v3.7.2.tar.gz -O cgminer-3.7.2.tgz
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;tar xvfz cgminer-3.7.2.tgz
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;cp -p ADL_SDK_6.0/include/*.* cgminer-3.7.2/ADL_SDK/
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;cgminer-3.7.2
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;./autogen.sh --enable-scrypt --enable-opencl
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;sudo make install&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;After autogen, you should see something like the following:&lt;/p&gt;
 
-&lt;p&gt;&lt;em&gt;CGminer &lt;code class=&quot;highlighter-rouge&quot;&gt;autogen.sh&lt;/code&gt; results&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;CGminer &lt;code&gt;autogen.sh&lt;/code&gt; results&lt;/em&gt;&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;------------------------------------------------------------------------
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;sh&quot;&gt;------------------------------------------------------------------------
 cgminer 3.7.2
 ------------------------------------------------------------------------
 
@@ -241,19 +241,19 @@ Compilation............: make &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;or g
   LDFLAGS..............:  -lpthread
   LDADD................: -ldl -lcurl   compat/jansson-2.5/src/.libs/libjansson.a -lpthread -L/opt/AMDAPP/lib/x86_64 -lOpenCL    -lm  -lrt
 
-Installation...........: make install &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;as root &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;needed, with &lt;span class=&quot;s1&quot;&gt;&#39;su&#39;&lt;/span&gt; or &lt;span class=&quot;s1&quot;&gt;&#39;sudo&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-  prefix...............: /usr/local&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+Installation...........: make install &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;as root &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;needed, with &lt;span class=&quot;s1&quot;&gt;&amp;#39;su&amp;#39;&lt;/span&gt; or &lt;span class=&quot;s1&quot;&gt;&amp;#39;sudo&amp;#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  prefix...............: /usr/local&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;create-the-shell-script&quot;&gt;Create the Shell Script&lt;/h2&gt;
 
-&lt;p&gt;Create &lt;code class=&quot;highlighter-rouge&quot;&gt;cgminer.sh&lt;/code&gt; to set ENV&lt;/p&gt;
+&lt;p&gt;Create &lt;code&gt;cgminer.sh&lt;/code&gt; to set ENV&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;sh&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;
 &lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DISPLAY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;:0
 &lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;GPU_MAX_ALLOC_PERCENT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;100
 &lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;GPU_USE_SYNC_OBJECTS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
 /path/to/cgminer --scrypt --url&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;stratum+tcp://&amp;lt;fqdn1&amp;gt;:&amp;lt;port1&amp;gt; --userpass&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;lt;user1&amp;gt;:&amp;lt;pass1&amp;gt; --url&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;stratum+tcp://&amp;lt;fqdn2&amp;gt;:&amp;lt;port2&amp;gt; --userpass&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;lt;user2&amp;gt;:&amp;lt;pass2&amp;gt; --failover-only --thread-concurrency&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;22400 --intensity&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;20 --temp-target 80 --temp-cutoff 85 --gpu-po
-wertune 20 --thread-concurrency 24000 --gpu-engine 1100&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+wertune 20 --thread-concurrency 24000 --gpu-engine 1100&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;h2 id=&quot;happy-mining&quot;&gt;Happy Mining!&lt;/h2&gt;
 
@@ -325,19 +325,19 @@ wertune 20 --thread-concurrency 24000 --gpu-engine 1100&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
 
-&lt;p&gt;In SSL/TLS, domain name verification occurs by matching the FQDN of the system with the name specified in the certificate. The certificate name can be in two locations, either the Subject or the Subject Alternative Name (&lt;code class=&quot;highlighter-rouge&quot;&gt;subjectAltName&lt;/code&gt;) extension. When present in the Subject, the name that is used is the Common Name (CN) component of the X.500 Distinguished Name (DN). A second place that is often checked is the Subject Alternative Name (SAN) extension which can contain a list of DNS names, IP addresses, email addresses or URIs.&lt;/p&gt;
+&lt;p&gt;In SSL/TLS, domain name verification occurs by matching the FQDN of the system with the name specified in the certificate. The certificate name can be in two locations, either the Subject or the Subject Alternative Name (&lt;code&gt;subjectAltName&lt;/code&gt;) extension. When present in the Subject, the name that is used is the Common Name (CN) component of the X.500 Distinguished Name (DN). A second place that is often checked is the Subject Alternative Name (SAN) extension which can contain a list of DNS names, IP addresses, email addresses or URIs.&lt;/p&gt;
 
 &lt;p&gt;Both wildcard domains and subject alternative names are techniques to enable certificates to authenticate more than one domain name. This is often useful as it is common for a system to have more than one domain name.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;Wildcard Domains:&lt;/strong&gt; Wildcard domains such as &lt;code class=&quot;highlighter-rouge&quot;&gt;*.example.com&lt;/code&gt; are useful when protecting multiple services on one domain such as &lt;code class=&quot;highlighter-rouge&quot;&gt;www.example.com&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;mail.example.com&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;mx.example.com&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;ftp.example.com&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;blog.example.com&lt;/code&gt;, etc. however it has several limitations:
+  &lt;li&gt;&lt;strong&gt;Wildcard Domains:&lt;/strong&gt; Wildcard domains such as &lt;code&gt;*.example.com&lt;/code&gt; are useful when protecting multiple services on one domain such as &lt;code&gt;www.example.com&lt;/code&gt;, &lt;code&gt;mail.example.com&lt;/code&gt;, &lt;code&gt;mx.example.com&lt;/code&gt;, &lt;code&gt;ftp.example.com&lt;/code&gt;, &lt;code&gt;blog.example.com&lt;/code&gt;, etc. however it has several limitations:
     &lt;ul&gt;
-      &lt;li&gt;&lt;strong&gt;Non-zero length subdomain:&lt;/strong&gt; first is that many sites will use a combination of &lt;code class=&quot;highlighter-rouge&quot;&gt;www.example.com&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;example.com&lt;/code&gt; and a &lt;code class=&quot;highlighter-rouge&quot;&gt;*.example.com&lt;/code&gt; wildcard will not match the latter.&lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;Only flat subdomain support:&lt;/strong&gt; wildcards will not support multiple subdomains, for example &lt;code class=&quot;highlighter-rouge&quot;&gt;*.m.example.com&lt;/code&gt; will not be matched by &lt;code class=&quot;highlighter-rouge&quot;&gt;*.example.com&lt;/code&gt;.&lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;Only one domain:&lt;/strong&gt; finally, &lt;code class=&quot;highlighter-rouge&quot;&gt;*.example.com&lt;/code&gt; will not support an entirely different subdomain such as &lt;code class=&quot;highlighter-rouge&quot;&gt;foobar.com&lt;/code&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Non-zero length subdomain:&lt;/strong&gt; first is that many sites will use a combination of &lt;code&gt;www.example.com&lt;/code&gt; and &lt;code&gt;example.com&lt;/code&gt; and a &lt;code&gt;*.example.com&lt;/code&gt; wildcard will not match the latter.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Only flat subdomain support:&lt;/strong&gt; wildcards will not support multiple subdomains, for example &lt;code&gt;*.m.example.com&lt;/code&gt; will not be matched by &lt;code&gt;*.example.com&lt;/code&gt;.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Only one domain:&lt;/strong&gt; finally, &lt;code&gt;*.example.com&lt;/code&gt; will not support an entirely different subdomain such as &lt;code&gt;foobar.com&lt;/code&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;Subject Alternative Name:&lt;/strong&gt; Using the X.509 &lt;code class=&quot;highlighter-rouge&quot;&gt;subjectAltName&lt;/code&gt; extension has been useful to address some of the limiations of wildcard domains, namely they can contain multiple FQDNs of all types so names with differing numbers of subdomains and entirely different domains can be suppored. To make SANs even more useful, the goal of this effort was to validate the support for using wildcard domain names in the SAN.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Subject Alternative Name:&lt;/strong&gt; Using the X.509 &lt;code&gt;subjectAltName&lt;/code&gt; extension has been useful to address some of the limiations of wildcard domains, namely they can contain multiple FQDNs of all types so names with differing numbers of subdomains and entirely different domains can be suppored. To make SANs even more useful, the goal of this effort was to validate the support for using wildcard domain names in the SAN.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;ietf-standards-support&quot;&gt;IETF Standards Support&lt;/h2&gt;
@@ -350,22 +350,22 @@ wertune 20 --thread-concurrency 24000 --gpu-engine 1100&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&quot;in-the-lab---openssl&quot;&gt;In the Lab - OpenSSL&lt;/h2&gt;
 
-&lt;p&gt;To try this in the lab, we create a CSR using OpenSSL by creating a config file to be referenced by the &lt;code class=&quot;highlighter-rouge&quot;&gt;openssl req&lt;/code&gt; command which can generate a key pair and Certificate Signing Request (CSR) with the WSANs included as shown below:&lt;/p&gt;
+&lt;p&gt;To try this in the lab, we create a CSR using OpenSSL by creating a config file to be referenced by the &lt;code&gt;openssl req&lt;/code&gt; command which can generate a key pair and Certificate Signing Request (CSR) with the WSANs included as shown below:&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;create OpenSSL req.cfg&lt;/strong&gt;&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bbcode&quot; data-lang=&quot;bbcode&quot;&gt;[req]
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bbcode&quot;&gt;&lt;span class=&quot;k&quot;&gt;[req]&lt;/span&gt;
 req_extensions = v3_req
-[v3_req]
+&lt;span class=&quot;k&quot;&gt;[v3_req]&lt;/span&gt;
 subjectAltName = @alt_names
-[alt_names]
+&lt;span class=&quot;k&quot;&gt;[alt_names]&lt;/span&gt;
 DNS.1 = *.example.com
 DNS.2 = *.m.example.com
-DNS.3 = example.com&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+DNS.3 = example.com&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Now generate the keypair and CSR:&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;openssl req -new -newkey rsa:2048 -sha256 -nodes -out keypair.csr -keyout keypair.key -config req.cfg&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;openssl req -new -newkey rsa:2048 -sha256 -nodes -out keypair.csr -keyout keypair.key -config req.cfg&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Once the CSR is available, use it to make a certificate request from a private CA to test support such as Microsoft Certificate Authority.&lt;/p&gt;
 
@@ -373,14 +373,14 @@ DNS.3 = example.com&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;Apache conf&lt;/p&gt;
 
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;LoadModule ssl_module modules/mod_ssl.so
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;xml&quot;&gt;LoadModule ssl_module modules/mod_ssl.so
 Listen 443
 &lt;span class=&quot;nt&quot;&gt;&amp;lt;VirtualHost&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;*:443&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
    ServerName www.example.com
    SSLEngine on
    SSLCertificateFile /path/to/keypair.cert
    SSLCertificateKeyFile /path/to/keypair.key
-&lt;span class=&quot;nt&quot;&gt;&amp;lt;/VirtualHost&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/VirtualHost&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 &lt;p&gt;Finally, connect a web browser to the web server and see if the certificate validates, first importing and trusting the private CA root certificate of course.&lt;/p&gt;
 
@@ -401,7 +401,7 @@ Listen 443
   &lt;li&gt;many SANs can be supported&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;This indicated popular browser support, however, it did not indicate popular issuance of such certificates as the certificate is not signed directly by a public CA but is signed by the &lt;code class=&quot;highlighter-rouge&quot;&gt;Google Internet Authority G2&lt;/code&gt; Certificate Authority, a subordinate CA under GeoTrust. Some Internet reports have indicated that subordinate CA certificates also cost in the range of $150,000 to set up and $75,000 / year to maintain which makes it unavaialble as a mainstream solution and there are &lt;a href=&quot;https://blog.mozilla.org/security/2013/02/15/announcing-version-2-1-of-mozilla-ca-certificate-policy/&quot;&gt;technical constraints&lt;/a&gt; as well.&lt;/p&gt;
+&lt;p&gt;This indicated popular browser support, however, it did not indicate popular issuance of such certificates as the certificate is not signed directly by a public CA but is signed by the &lt;code&gt;Google Internet Authority G2&lt;/code&gt; Certificate Authority, a subordinate CA under GeoTrust. Some Internet reports have indicated that subordinate CA certificates also cost in the range of $150,000 to set up and $75,000 / year to maintain which makes it unavaialble as a mainstream solution and there are &lt;a href=&quot;https://blog.mozilla.org/security/2013/02/15/announcing-version-2-1-of-mozilla-ca-certificate-policy/&quot;&gt;technical constraints&lt;/a&gt; as well.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/images/pimages/PKI_SS_Multiple-Wildcard-SAN_Google.png&quot; alt=&quot;Google cert&quot; /&gt;&lt;/p&gt;
 

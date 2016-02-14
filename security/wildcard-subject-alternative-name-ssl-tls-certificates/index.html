@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Wildcard Subject Alternate Name SSL/TLS Certificates</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Managing hundreds or thousands of servers for SSL/TLS can be a challenge due to the potential number of certificates involved. To address this, I recently looked into combining two common management features of certificates, wildcard domain names and subject alternative names (SANs) into a &#8220;Wildcard SAN&#8221; certificate. Eventually I found that these certificates are in use but knowledge of them does not appear to be widespread.
+
+">
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <!-- twitter meta -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@lauriswat" />
+    <meta name="twitter:title" content="Wildcard Subject Alternate Name SSL/TLS Certificates" />
+    <meta name="twitter:description" content="Managing hundreds or thousands of servers for SSL/TLS can be a challenge due to the potential number of certificates involved. To address this, I recently looked into combining two common management features of certificates, wildcard domain names and subject alternative names (SANs) into a &#8220;Wildcard SAN&#8221; certificate. Eventually I found that these certificates are in use but knowledge of them does not appear to be widespread.
+
+" />
+    <meta name="twitter:url" content="https://grokify.github.io/security/wildcard-subject-alternative-name-ssl-tls-certificates" />
+    
+
+    <!-- google -->
+    <link rel="author" href="https://plus.google.com/u/1/106958955611683589420/posts"/>
+    <link rel="publisher" href="https://plus.google.com/u/1/106958955611683589420"/>
+    
+    
+
+    <link rel="canonical" href="https://grokify.github.io/security/wildcard-subject-alternative-name-ssl-tls-certificates">
+    <link rel="icon" type="image/png" href="/images/lambda-xl.png">
+
+    <!-- Custom CSS -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/lambda.css?v2.1">
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-32022445-1', 'auto');
+        ga('send', 'pageview');
+
+        var host = "lauris.github.io";
+        if ((host == window.location.host) && (window.location.protocol != "https:")) {
+            window.location.protocol = "https";
+        }
+    </script>
+
+</head>
+
+
+    <body>
+    
+    <div class="wrapper">
+
+      <header id="main-header">
+  <div id="site-title">
+    <i class="fa fa-rebel" style="font-size:150%"></i>
+    <a href="/">Grokify by John Wang</a>
+  </div>
+  <div class="links">
+  
+  <a href="/" class="page-link">Blog</a>
+  
+    
+  
+    
+      <a class="page-link"
+        href="/about/">About</a>
+    
+  
+    
+  
+    
+  
+  <a href="/feed.xml" target="_blank" class="page-link">RSS</a>
+  <a href="http://twitter.com/grokify" target="_blank" class="page-link">Twitter</a>
+  <a href="http://github.com/grokify/lauris.github.com"
+    target="_blank"
+    class="page-link github-link">
+    <i class="fa fa-github"></i>
+    Source</a>
+  </div>
+</header>
+
+      
+      <div id="content">
+        <div id="articles">
+          <div class="article-list">
+            <div class="entry">
+
+	<div class="entry-content">
+
+	  <header>
+	    <h1 class="entry-title"><a href="/security/wildcard-subject-alternative-name-ssl-tls-certificates">Wildcard Subject Alternate Name SSL/TLS Certificates</a></h1>
+	    <p class="entry-meta">Jan 12, 2014 • Category: Security</p>
+	  </header>
+
+	  <article class="entry-body">
+	  	
+	  		<p>Managing hundreds or thousands of servers for SSL/TLS can be a challenge due to the potential number of certificates involved. To address this, I recently looked into combining two common management features of certificates, wildcard domain names and subject alternative names (SANs) into a “Wildcard SAN” certificate. Eventually I found that these certificates are in use but knowledge of them does not appear to be widespread.</p>
+
+<!-- more -->
+
+<p>The conclusion is that wildcard SAN certificates are supported by public and private CAs, are in use at major websites (Google and Yahoo) and appear to be safe for SMTP with some known limitations.</p>
+
+<h2 id="background">Background</h2>
+
+<p>In SSL/TLS, domain name verification occurs by matching the FQDN of the system with the name specified in the certificate. The certificate name can be in two locations, either the Subject or the Subject Alternative Name (<code>subjectAltName</code>) extension. When present in the Subject, the name that is used is the Common Name (CN) component of the X.500 Distinguished Name (DN). A second place that is often checked is the Subject Alternative Name (SAN) extension which can contain a list of DNS names, IP addresses, email addresses or URIs.</p>
+
+<p>Both wildcard domains and subject alternative names are techniques to enable certificates to authenticate more than one domain name. This is often useful as it is common for a system to have more than one domain name.</p>
+
+<ul>
+  <li><strong>Wildcard Domains:</strong> Wildcard domains such as <code>*.example.com</code> are useful when protecting multiple services on one domain such as <code>www.example.com</code>, <code>mail.example.com</code>, <code>mx.example.com</code>, <code>ftp.example.com</code>, <code>blog.example.com</code>, etc. however it has several limitations:
+    <ul>
+      <li><strong>Non-zero length subdomain:</strong> first is that many sites will use a combination of <code>www.example.com</code> and <code>example.com</code> and a <code>*.example.com</code> wildcard will not match the latter.</li>
+      <li><strong>Only flat subdomain support:</strong> wildcards will not support multiple subdomains, for example <code>*.m.example.com</code> will not be matched by <code>*.example.com</code>.</li>
+      <li><strong>Only one domain:</strong> finally, <code>*.example.com</code> will not support an entirely different subdomain such as <code>foobar.com</code></li>
+    </ul>
+  </li>
+  <li><strong>Subject Alternative Name:</strong> Using the X.509 <code>subjectAltName</code> extension has been useful to address some of the limiations of wildcard domains, namely they can contain multiple FQDNs of all types so names with differing numbers of subdomains and entirely different domains can be suppored. To make SANs even more useful, the goal of this effort was to validate the support for using wildcard domain names in the SAN.</li>
+</ul>
+
+<h2 id="ietf-standards-support">IETF Standards Support</h2>
+
+<p>Before starting, the first place to check was support in the X.509 PKI standards and <a href="http://www.ietf.org/">IETF</a> <a href="http://tools.ietf.org/search/rfc3280#section-4.2.1.7">RFC 3280: Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile</a> does indicate that wildcard SANs may be used in certificates but are not defined within the RFC:</p>
+
+<blockquote>
+  <p>the semantics of subject alternative names that include wildcard characters (e.g., as a placeholder for a set of names) are not addressed by this specification.  Applications with specific requirements MAY use such names, but they must define the semantics.</p>
+</blockquote>
+
+<h2 id="in-the-lab---openssl">In the Lab - OpenSSL</h2>
+
+<p>To try this in the lab, we create a CSR using OpenSSL by creating a config file to be referenced by the <code>openssl req</code> command which can generate a key pair and Certificate Signing Request (CSR) with the WSANs included as shown below:</p>
+
+<p><strong>create OpenSSL req.cfg</strong></p>
+
+<div class="highlight"><pre><code class="bbcode"><span class="k">[req]</span>
+req_extensions = v3_req
+<span class="k">[v3_req]</span>
+subjectAltName = @alt_names
+<span class="k">[alt_names]</span>
+DNS.1 = *.example.com
+DNS.2 = *.m.example.com
+DNS.3 = example.com</code></pre></div>
+
+<p>Now generate the keypair and CSR:</p>
+
+<div class="highlight"><pre><code class="bash"><span class="nv">$ </span>openssl req -new -newkey rsa:2048 -sha256 -nodes -out keypair.csr -keyout keypair.key -config req.cfg</code></pre></div>
+
+<p>Once the CSR is available, use it to make a certificate request from a private CA to test support such as Microsoft Certificate Authority.</p>
+
+<p>Finally, use the certificate in an application to verify successful SSL/TLS connections. For example, using the Apache web server, we can reference the key and certificate in the conf file:</p>
+
+<p>Apache conf</p>
+
+<div class="highlight"><pre><code class="xml">LoadModule ssl_module modules/mod_ssl.so
+Listen 443
+<span class="nt">&lt;VirtualHost</span> <span class="err">*:443</span><span class="nt">&gt;</span>
+   ServerName www.example.com
+   SSLEngine on
+   SSLCertificateFile /path/to/keypair.cert
+   SSLCertificateKeyFile /path/to/keypair.key
+<span class="nt">&lt;/VirtualHost&gt;</span></code></pre></div>
+
+<p>Finally, connect a web browser to the web server and see if the certificate validates, first importing and trusting the private CA root certificate of course.</p>
+
+<h2 id="in-the-wild---google-and-yahoo">In the Wild - Google and Yahoo!</h2>
+
+<p>Now that it has been established that certificates may have wildcard SANs and they can be issued, it made sense to see if these certificates were used in the wild. Investigating public CA websites indicated that most websites offered either wildcard CN certificates or explicit FQDN SAN certificates but not a combination of wildcard SAN certificates.</p>
+
+<p>Undeterred, I checked to see if anyone was using these in the wild. Information was thin but I did find a single post referencing Google on StackOverflow for YouTube. Pulling up their certificate and then Yahoo!’s indicated that these two services make widespread use of wildcard SAN certificates.</p>
+
+<h3 id="google-wildcard-san-certificate">Google Wildcard SAN Certificate</h3>
+
+<p>Examing the Google certificate provided some good insight in that:</p>
+
+<ul>
+  <li>multiple different domains are supported</li>
+  <li>multiple levels of subdomains are supported</li>
+  <li>popular websites are supported</li>
+  <li>many SANs can be supported</li>
+</ul>
+
+<p>This indicated popular browser support, however, it did not indicate popular issuance of such certificates as the certificate is not signed directly by a public CA but is signed by the <code>Google Internet Authority G2</code> Certificate Authority, a subordinate CA under GeoTrust. Some Internet reports have indicated that subordinate CA certificates also cost in the range of $150,000 to set up and $75,000 / year to maintain which makes it unavaialble as a mainstream solution and there are <a href="https://blog.mozilla.org/security/2013/02/15/announcing-version-2-1-of-mozilla-ca-certificate-policy/">technical constraints</a> as well.</p>
+
+<p><img src="/images/pimages/PKI_SS_Multiple-Wildcard-SAN_Google.png" alt="Google cert" /></p>
+
+<h3 id="yahoo-wildcard-san-certificate">Yahoo! Wildcard SAN Certificate</h3>
+
+<p>Finding the Google certificate was a strong indicator that these certificates are used by relying applications, however, we still need to see if public CAs will offer them. Moving on to Yahoo! we see that Yahoo! also uses a wildcard SAN certificate and this one is signed directly by DigiCert. From the Yahoo! certificate we learn that:</p>
+
+<ul>
+  <li>at least one public CA, DigiCert, offers these certificates</li>
+  <li>a mix of non-wildcard and wildcard SANs can be supported</li>
+</ul>
+
+<p><img src="/images/pimages/PKI_SS_Multiple-Wildcard-SAN_Yahoo.png" alt="Yahoo! cert" /></p>
+
+<h2 id="public-certificate-authority-offerings">Public Certificate Authority Offerings</h2>
+
+<p>Knowing that WSAN certificates are in the wild and offered by at least one CA enabled me to reach out directly to two public CAs and inquire about this feature even if it was not listed on their websites:</p>
+
+<ul>
+  <li><strong>DigiCert:</strong> The first CA I reached out to was <a href="http://www.digicert.com/">DigiCert</a> because they supplied the Yahoo! certificate. To purchase a WSAN certifiate, you need to purchase individual wildcard certificates and then contact DigiCert to have those combined into a single certificate.</li>
+  <li><strong>GlobalSign:</strong> I also reached out to <a href="https://www.globalsign.com/">GlobalSign</a> as I have a colleague there and I was informed that they also support WSAN certificates but as an unpublished offering due to customer demand.</li>
+</ul>
+
+<h2 id="use-cases">Use Cases</h2>
+
+<p>TLS/SSL certificates are used for a variety of purposes and for this exercise, I investigated both HTTPS and SMTP. It appears WSAN certificates are safe to use for HTTPS with web browsers and may be safe for SMTP.</p>
+
+<h3 id="https"><strong>HTTPS</strong></h3>
+
+<p>Given the widespread use of WSAN certificates by Google and Yahoo! on their popular websites, it seems reasonable to say that these certificates are supported by common web browsers. Mobile use still needs to be investigated.</p>
+
+<h3 id="smtp"><strong>SMTP</strong></h3>
+
+<p>SMTP over TLS is defined by IETF <a href="http://tools.ietf.org/html/rfc3207">RFC 3207</a>. It appears that some mail servers have issues with wildcard certificates. While Sendmail is known not to support SAN, representatives from public CAs and my professional experience have indicated no issues, possibly given the level of TLS name verification current in use.</p>
+
+<ul>
+  <li>** Exchange: ** Exchange 2007 and later requires certificates that have explicit internal FQDNs.</li>
+  <li>** Sendmail: ** Sendmail does not currently support name validation using SANs.</li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>From the above, we can conclude:</p>
+
+<ul>
+  <li>wildcard SAN (WSAN) certificates are supported by IETF RFC 3280</li>
+  <li>WSAN certs are in widespread use for HTTPS</li>
+  <li>WSAN certs can be used for SMTP</li>
+  <li>WSAN CSRs can be generated by OpenSSL</li>
+  <li>Public CAs (DigiCert, GlobalSign) sign WSAN certificates</li>
+  <li>Micrsoft CA signs WSAN certificates</li>
+  <li>popular websites use WSAN certificates</li>
+  <li>multiple different domains are supported</li>
+  <li>multiple levels of subdomains are supported</li>
+  <li>many SANs can be supported within the SAN extension</li>
+  <li>a mix of non-wildcard and wildcard SANs can be supported</li>
+</ul>
+
+<p>This was an useful exercise for me from an operations and certifiate management perspective. If you have experience with these certificates, please provide a note below.</p>
+
+  		
+	  </article>
+
+  </div>
+
+
+
+</div>
+
+
+<div class="article-author">
+    <div class="avatar">
+    <img width="50" height="50" src="https://gravatar.com/avatar/111?s=50" alt=" Avatar"style="display:none" />
+    </div>
+    <div class="name">
+        <h4>Author: <b>John Wang</b></h4>
+    </div>
+</div>
+
+
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'grokify';
+    var disqus_identifier = '/security/wildcard-subject-alternative-name-ssl-tls-certificates';
+	(function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </body>
+</html>
