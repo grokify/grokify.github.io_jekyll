@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Read the Docs and Slate Integration Idea</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Read the Docs and Slate are two great open source documentation tools. Each has advantages with Read the Docs supporting repo-based documentation and Slate supporting 3-column layout. These advantages make both very useful for documenting SDKs. Given that each has their own strengths, it would be great to be able to use these together. Here&#8217;s an idea for single sourcing content and publishing into both.
+
+">
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <!-- twitter meta -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@lauriswat" />
+    <meta name="twitter:title" content="Read the Docs and Slate Integration Idea" />
+    <meta name="twitter:description" content="Read the Docs and Slate are two great open source documentation tools. Each has advantages with Read the Docs supporting repo-based documentation and Slate supporting 3-column layout. These advantages make both very useful for documenting SDKs. Given that each has their own strengths, it would be great to be able to use these together. Here&#8217;s an idea for single sourcing content and publishing into both.
+
+" />
+    <meta name="twitter:url" content="https://grokify.github.io/readthedocs-slate-integration-idea" />
+    
+
+    <!-- google -->
+    <link rel="author" href="https://plus.google.com/u/1/106958955611683589420/posts"/>
+    <link rel="publisher" href="https://plus.google.com/u/1/106958955611683589420"/>
+    
+    
+
+    <link rel="canonical" href="https://grokify.github.io/readthedocs-slate-integration-idea">
+    <link rel="icon" type="image/png" href="/images/lambda-xl.png">
+
+    <!-- Custom CSS -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/lambda.css?v2.1">
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-32022445-1', 'auto');
+        ga('send', 'pageview');
+
+        var host = "lauris.github.io";
+        if ((host == window.location.host) && (window.location.protocol != "https:")) {
+            window.location.protocol = "https";
+        }
+    </script>
+
+</head>
+
+
+    <body>
+    
+    <div class="wrapper">
+
+      <header id="main-header">
+  <div id="site-title">
+    <i class="fa fa-rebel" style="font-size:150%"></i>
+    <a href="/">Grokify by John Wang</a>
+  </div>
+  <div class="links">
+  
+  <a href="/" class="page-link">Blog</a>
+  
+    
+  
+    
+      <a class="page-link"
+        href="/about/">About</a>
+    
+  
+    
+  
+    
+  
+  <a href="/feed.xml" target="_blank" class="page-link">RSS</a>
+  <a href="http://twitter.com/grokify" target="_blank" class="page-link">Twitter</a>
+  <a href="http://github.com/grokify/lauris.github.com"
+    target="_blank"
+    class="page-link github-link">
+    <i class="fa fa-github"></i>
+    Source</a>
+  </div>
+</header>
+
+      
+      <div id="content">
+        <div id="articles">
+          <div class="article-list">
+            <div class="entry">
+
+	<div class="entry-content">
+
+	  <header>
+	    <h1 class="entry-title"><a href="/readthedocs-slate-integration-idea">Read the Docs and Slate Integration Idea</a></h1>
+	    <p class="entry-meta">Oct 9, 2015 • Category: Project ideas</p>
+	  </header>
+
+	  <article class="entry-body">
+	  	
+	  		<p><a href="https://readthedocs.org/">Read the Docs</a> and <a href="https://github.com/tripit/slate">Slate</a> are two great open source documentation tools. Each has advantages with Read the Docs supporting repo-based documentation and Slate supporting 3-column layout. These advantages make both very useful for documenting SDKs. Given that each has their own strengths, it would be great to be able to use these together. Here’s an idea for single sourcing content and publishing into both.</p>
+
+<!-- more -->
+
+<h2 id="situation">Situation</h2>
+
+<p>Read the Docs is powerful because it allows documentation to reside directly in a SDK repository. As such, the docs and be versioned exactly with the SDK and it includes nice themes and navigation. However, as it is tied to the repo, it is necessarily limited when it comes to reading documentation across repos which is Slate’s strong suit.</p>
+
+<p>While Slate is good at managing documentation across langauges in its 3-column layout, manually updating this content requires different SDK maintainers to continually monitor, contribute to and update the multi-language Slate repo.</p>
+
+<h2 id="proposal">Proposal</h2>
+
+<p>The idea is that SDK authors could author content in Read the Docs format using markdown. When certain tags are added to code snippets those would automatically get merged into a Slate markdown file. This way developers can stay focused on working on their language-specific SDKs while documentation staff can own collection of and normalizing that data until it is fit for release.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>Documentation is hte life blood of developer programs and it behooves programs to use the best apps available to them. Read the Docs and Slate are two such tools and as such it would be great to see them work together in a seamless fashion.</p>
+
+  		
+	  </article>
+
+  </div>
+
+
+
+</div>
+
+
+<div class="article-author">
+    <div class="avatar">
+    <img width="50" height="50" src="https://gravatar.com/avatar/111?s=50" alt=" Avatar"style="display:none" />
+    </div>
+    <div class="name">
+        <h4>Author: <b>John Wang</b></h4>
+    </div>
+</div>
+
+
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'grokify';
+    var disqus_identifier = '/readthedocs-slate-integration-idea';
+	(function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Glip Inbound Webhook SDKs</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="I recently put together two SDKs to wrap Glip’s inbound webhooks when there’s a desire to have data from other sites integrated into Glip alerts.
+
+">
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <!-- twitter meta -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@lauriswat" />
+    <meta name="twitter:title" content="Glip Inbound Webhook SDKs" />
+    <meta name="twitter:description" content="I recently put together two SDKs to wrap Glip’s inbound webhooks when there’s a desire to have data from other sites integrated into Glip alerts.
+
+" />
+    <meta name="twitter:url" content="https://grokify.github.io/glip/inbound-webhook-sdks" />
+    
+
+    <!-- google -->
+    <link rel="author" href="https://plus.google.com/u/1/106958955611683589420/posts"/>
+    <link rel="publisher" href="https://plus.google.com/u/1/106958955611683589420"/>
+    
+    
+
+    <link rel="canonical" href="https://grokify.github.io/glip/inbound-webhook-sdks">
+    <link rel="icon" type="image/png" href="/images/lambda-xl.png">
+
+    <!-- Custom CSS -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/lambda.css?v2.1">
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-32022445-1', 'auto');
+        ga('send', 'pageview');
+
+        var host = "lauris.github.io";
+        if ((host == window.location.host) && (window.location.protocol != "https:")) {
+            window.location.protocol = "https";
+        }
+    </script>
+
+</head>
+
+
+    <body>
+    
+    <div class="wrapper">
+
+      <header id="main-header">
+  <div id="site-title">
+    <i class="fa fa-rebel" style="font-size:150%"></i>
+    <a href="/">Grokify by John Wang</a>
+  </div>
+  <div class="links">
+  
+  <a href="/" class="page-link">Blog</a>
+  
+    
+  
+    
+      <a class="page-link"
+        href="/about/">About</a>
+    
+  
+    
+  
+    
+  
+  <a href="/feed.xml" target="_blank" class="page-link">RSS</a>
+  <a href="http://twitter.com/grokify" target="_blank" class="page-link">Twitter</a>
+  <a href="http://github.com/grokify/lauris.github.com"
+    target="_blank"
+    class="page-link github-link">
+    <i class="fa fa-github"></i>
+    Source</a>
+  </div>
+</header>
+
+      
+      <div id="content">
+        <div id="articles">
+          <div class="article-list">
+            <div class="entry">
+
+	<div class="entry-content">
+
+	  <header>
+	    <h1 class="entry-title"><a href="/glip/inbound-webhook-sdks">Glip Inbound Webhook SDKs</a></h1>
+	    <p class="entry-meta">Feb 9, 2016 • Category: Software</p>
+	  </header>
+
+	  <article class="entry-body">
+	  	
+	  		<p>I recently put together two SDKs to wrap <a href="https://glip.com">Glip</a>’s inbound webhooks when there’s a desire to have data from other sites integrated into Glip alerts.</p>
+
+<!-- more -->
+
+<p>I originally built the library as a <a href="https://github.com/grokify/glip-poster-ruby">Ruby SDK</a> since this is one of my go-to languages for quick prototyping, however, after learning that many chat users may not be developers with the means to run their own servers, I looked into writing this as a Google App and a Swift iOS app. The Google App is still in development but the <a href="https://github.com/grokify/glip-sdk-swift">Swift SDK</a> is out.</p>
+
+<h2 id="use-cases">Use Cases</h2>
+
+<p>Chat systems like <a href="https://glip.com">Glip</a> and others are used to consolidate information into teams and private messages for easy consolidated reading via web clients and mobile clients. By enabling multiple services to write into these chat teams, more people can be alerted to important events.</p>
+
+<p>The initial use cases I’ve implemented and discussed include the following:</p>
+
+<ul>
+  <li>Posting new voicemails to chat teams</li>
+  <li>Posting new inbound faxes to chat teams</li>
+  <li>Posting new inbound SMS text to chat teams: <a href="https://devcommunity.ringcentral.com/ringcentraldev/topics/can-you-use-javascript-sdk-to-read-incmoing-sms">request</a></li>
+</ul>
+
+<h2 id="ruby-sdk">Ruby SDK</h2>
+
+<p>The Ruby SDK, <a href="https://github.com/grokify/glip-poster-ruby"><code class="highlighter-rouge">Glip::Poster</code></a> is designed to have the same interface as other <code class="highlighter-rouge">*::Poster</code> chat SDKs making them interchangeable. It provides an easy to use interface supporting webhook options on a per-message basis and as part of the defaults.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="nb">require</span> <span class="s1">'glip_poster'</span>
+
+<span class="n">poster</span> <span class="o">=</span> <span class="no">Glip</span><span class="o">::</span><span class="no">Poster</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="no">YOUR_WEBHOOK_URL</span><span class="p">)</span>
+<span class="n">poster</span><span class="p">.</span><span class="nf">options</span><span class="p">[</span><span class="ss">:icon</span><span class="p">]</span> <span class="o">=</span> <span class="s1">'http://example.com/icon.png'</span>
+<span class="n">poster</span><span class="p">.</span><span class="nf">send_message</span><span class="p">(</span><span class="s1">'Hi there!'</span><span class="p">)</span></code></pre></figure>
+
+<p>As mentioned above, while Ruby is nice and used by many people, setting up a service to transform event data to Glip’s inbound webhook format requires standing up a server permanently which may not be attractive or possible given the circumstances.</p>
+
+<h2 id="swift-sdk">Swift SDK</h2>
+
+<p>When thinking of alternative approaches, the thought of creating a Chrome App and an iOS App both came up. When the iOS app was the only viable choice, the <a href="https://github.com/grokify/glip-sdk-swift">Glip Swift SDK</a> was born.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="n">glip</span> <span class="o">=</span> <span class="no">Poster</span><span class="p">(</span><span class="no">YOUR_WEBHOOK_URL</span><span class="p">,</span> <span class="ss">icon: </span><span class="s2">"http://example.com/icon.png"</span><span class="p">)</span>
+<span class="n">glip</span><span class="p">.</span><span class="nf">sendMessage</span><span class="p">(</span><span class="s2">"Hi there!"</span><span class="p">)</span></code></pre></figure>
+
+<h2 id="sms-to-glip-webhook-example">SMS to Glip Webhook Example</h2>
+
+<p>In addition to the SDK libraries themselves, the Ruby SDK includes a sample script <a href="https://github.com/grokify/ringcentral-sdk-ruby/blob/master/scripts/sms_to_chat.rb"><code class="highlighter-rouge">sms_to_chat.rb</code></a> which runs and demonstrates this in action. As part of the solution, the script subscribes to all inbound extensions and will send an alert to the chat system of choice for new alerts.</p>
+
+<h2 id="summary">Summary</h2>
+
+<p>Although the Glip Inbound Webhook format is simple, create an easy to use SDK is still very helpful. If you have an interest in using Glip, please try out these SDKs and provide feedback.</p>
+
+  		
+	  </article>
+
+  </div>
+
+
+
+</div>
+
+
+<div class="article-author">
+    <div class="avatar">
+    <img width="50" height="50" src="https://gravatar.com/avatar/111?s=50" alt=" Avatar"style="display:none" />
+    </div>
+    <div class="name">
+        <h4>Author: <b>John Wang</b></h4>
+    </div>
+</div>
+
+
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'grokify';
+    var disqus_identifier = '/glip/inbound-webhook-sdks';
+	(function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </body>
+</html>

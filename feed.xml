@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Grokify by John Wang</title>
+    <description>Personal blog about product management, engineering, hacking, open-source, startups, etc.</description>
+    <link>https://grokify.github.io/</link>
+    <atom:link href="https://grokify.github.io/feed.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Sun, 14 Feb 2016 12:10:33 -0800</pubDate>
+    <lastBuildDate>Sun, 14 Feb 2016 12:10:33 -0800</lastBuildDate>
+    <generator>Jekyll v3.0.3</generator>
+    
+      <item>
+        <title>Static Knowledgebase Idea</title>
+        <description>&lt;p&gt;I was recently thinking about developer-oriented knowledgebases and thought it would be a great idea to build a knowledgebase on a static blog engine like Jekyll or Hugo. This could be done by adding a knowledgebase layout homepage with an added search capability. I imagine a project like this could be very useful to developer projects and would love to see it developed.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&quot;navigation&quot;&gt;Navigation&lt;/h2&gt;
+
+&lt;p&gt;Unlike a blog which has articles listed by date, the top level navigation for the knowledgebase would be based on tag. Each tag would include it’s most popular articles and think link to the tag page for more articles. Each tag could be in a div box. It may be worthwhile to have some override for tag ordering beyond alphabetical.&lt;/p&gt;
+
+&lt;h2 id=&quot;search&quot;&gt;Search&lt;/h2&gt;
+
+&lt;p&gt;At this time &lt;a href=&quot;https://www.algolia.com/&quot;&gt;Algolia&lt;/a&gt; provides free search for up to 10,000 records and 100,000 operations per month. That’s more than enough for sites to get started and popular sites can sign up for Algolia’s paid plans.&lt;/p&gt;
+
+&lt;h2 id=&quot;authoring-and-version-control&quot;&gt;Authoring and Version Control&lt;/h2&gt;
+
+&lt;p&gt;The power of of building a knowledgebase off of a static blog generator is, of course, to allow developers to author in markdown stored on GitHub or another version control system.&lt;/p&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;Static blog generators are popular with developers due to their simplicity and integration with services like GitHub. By enhancing a static blog generator to behave like a knowledgebase, developers can provide the knowledgebase experience users are accustomed to while supporting the authoring environment they are accustomed to.&lt;/p&gt;
+
+&lt;p&gt;While I think this is a great idea, I don’t have enough time to work on it now so if anyone is interested in this or knows of a project, please let me know :)&lt;/p&gt;
+</description>
+        <pubDate>Sun, 14 Feb 2016 00:00:00 -0800</pubDate>
+        <link>https://grokify.github.io/ideas/static-knowledgebase</link>
+        <guid isPermaLink="true">https://grokify.github.io/ideas/static-knowledgebase</guid>
+        
+        
+        <category>Ideas</category>
+        
+      </item>
+    
+      <item>
+        <title>Glip Inbound Webhook SDKs</title>
+        <description>&lt;p&gt;I recently put together two SDKs to wrap &lt;a href=&quot;https://glip.com&quot;&gt;Glip&lt;/a&gt;’s inbound webhooks when there’s a desire to have data from other sites integrated into Glip alerts.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;I originally built the library as a &lt;a href=&quot;https://github.com/grokify/glip-poster-ruby&quot;&gt;Ruby SDK&lt;/a&gt; since this is one of my go-to languages for quick prototyping, however, after learning that many chat users may not be developers with the means to run their own servers, I looked into writing this as a Google App and a Swift iOS app. The Google App is still in development but the &lt;a href=&quot;https://github.com/grokify/glip-sdk-swift&quot;&gt;Swift SDK&lt;/a&gt; is out.&lt;/p&gt;
+
+&lt;h2 id=&quot;use-cases&quot;&gt;Use Cases&lt;/h2&gt;
+
+&lt;p&gt;Chat systems like &lt;a href=&quot;https://glip.com&quot;&gt;Glip&lt;/a&gt; and others are used to consolidate information into teams and private messages for easy consolidated reading via web clients and mobile clients. By enabling multiple services to write into these chat teams, more people can be alerted to important events.&lt;/p&gt;
+
+&lt;p&gt;The initial use cases I’ve implemented and discussed include the following:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Posting new voicemails to chat teams&lt;/li&gt;
+  &lt;li&gt;Posting new inbound faxes to chat teams&lt;/li&gt;
+  &lt;li&gt;Posting new inbound SMS text to chat teams: &lt;a href=&quot;https://devcommunity.ringcentral.com/ringcentraldev/topics/can-you-use-javascript-sdk-to-read-incmoing-sms&quot;&gt;request&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;ruby-sdk&quot;&gt;Ruby SDK&lt;/h2&gt;
+
+&lt;p&gt;The Ruby SDK, &lt;a href=&quot;https://github.com/grokify/glip-poster-ruby&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Glip::Poster&lt;/code&gt;&lt;/a&gt; is designed to have the same interface as other &lt;code class=&quot;highlighter-rouge&quot;&gt;*::Poster&lt;/code&gt; chat SDKs making them interchangeable. It provides an easy to use interface supporting webhook options on a per-message basis and as part of the defaults.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;glip_poster&#39;&lt;/span&gt;
+
+&lt;span class=&quot;n&quot;&gt;poster&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Glip&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;::&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Poster&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;YOUR_WEBHOOK_URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;poster&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:icon&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;http://example.com/icon.png&#39;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;poster&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;send_message&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Hi there!&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;As mentioned above, while Ruby is nice and used by many people, setting up a service to transform event data to Glip’s inbound webhook format requires standing up a server permanently which may not be attractive or possible given the circumstances.&lt;/p&gt;
+
+&lt;h2 id=&quot;swift-sdk&quot;&gt;Swift SDK&lt;/h2&gt;
+
+&lt;p&gt;When thinking of alternative approaches, the thought of creating a Chrome App and an iOS App both came up. When the iOS app was the only viable choice, the &lt;a href=&quot;https://github.com/grokify/glip-sdk-swift&quot;&gt;Glip Swift SDK&lt;/a&gt; was born.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;n&quot;&gt;glip&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Poster&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;YOUR_WEBHOOK_URL&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;ss&quot;&gt;icon: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://example.com/icon.png&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;glip&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;sendMessage&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Hi there!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;sms-to-glip-webhook-example&quot;&gt;SMS to Glip Webhook Example&lt;/h2&gt;
+
+&lt;p&gt;In addition to the SDK libraries themselves, the Ruby SDK includes a sample script &lt;a href=&quot;https://github.com/grokify/ringcentral-sdk-ruby/blob/master/scripts/sms_to_chat.rb&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;sms_to_chat.rb&lt;/code&gt;&lt;/a&gt; which runs and demonstrates this in action. As part of the solution, the script subscribes to all inbound extensions and will send an alert to the chat system of choice for new alerts.&lt;/p&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;Although the Glip Inbound Webhook format is simple, create an easy to use SDK is still very helpful. If you have an interest in using Glip, please try out these SDKs and provide feedback.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 09 Feb 2016 00:00:00 -0800</pubDate>
+        <link>https://grokify.github.io/glip/inbound-webhook-sdks</link>
+        <guid isPermaLink="true">https://grokify.github.io/glip/inbound-webhook-sdks</guid>
+        
+        
+        <category>software</category>
+        
+      </item>
+    
+      <item>
+        <title>Read the Docs and Slate Integration Idea</title>
+        <description>&lt;p&gt;&lt;a href=&quot;https://readthedocs.org/&quot;&gt;Read the Docs&lt;/a&gt; and &lt;a href=&quot;https://github.com/tripit/slate&quot;&gt;Slate&lt;/a&gt; are two great open source documentation tools. Each has advantages with Read the Docs supporting repo-based documentation and Slate supporting 3-column layout. These advantages make both very useful for documenting SDKs. Given that each has their own strengths, it would be great to be able to use these together. Here’s an idea for single sourcing content and publishing into both.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&quot;situation&quot;&gt;Situation&lt;/h2&gt;
+
+&lt;p&gt;Read the Docs is powerful because it allows documentation to reside directly in a SDK repository. As such, the docs and be versioned exactly with the SDK and it includes nice themes and navigation. However, as it is tied to the repo, it is necessarily limited when it comes to reading documentation across repos which is Slate’s strong suit.&lt;/p&gt;
+
+&lt;p&gt;While Slate is good at managing documentation across langauges in its 3-column layout, manually updating this content requires different SDK maintainers to continually monitor, contribute to and update the multi-language Slate repo.&lt;/p&gt;
+
+&lt;h2 id=&quot;proposal&quot;&gt;Proposal&lt;/h2&gt;
+
+&lt;p&gt;The idea is that SDK authors could author content in Read the Docs format using markdown. When certain tags are added to code snippets those would automatically get merged into a Slate markdown file. This way developers can stay focused on working on their language-specific SDKs while documentation staff can own collection of and normalizing that data until it is fit for release.&lt;/p&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;Documentation is hte life blood of developer programs and it behooves programs to use the best apps available to them. Read the Docs and Slate are two such tools and as such it would be great to see them work together in a seamless fashion.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 09 Oct 2015 00:00:00 -0700</pubDate>
+        <link>https://grokify.github.io/ideas/readthedocs-slate-integration</link>
+        <guid isPermaLink="true">https://grokify.github.io/ideas/readthedocs-slate-integration</guid>
+        
+        
+        <category>Ideas</category>
+        
+      </item>
+    
+      <item>
+        <title>The Learning Pipeline - How to Keep Learning</title>
+        <description>&lt;p&gt;I was able to participate on &lt;a href=&quot;http://www.proofpoint.com&quot;&gt;Proofpoint&lt;/a&gt;’s Summer Intern panel discussion today and wanted to share my answer to one of the questions: how do you keep learning. When this question came up, I had the luxury of listening to a few of the other panelists before responding with my own answer which consisted of the following four steps.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&quot;reading-online-community-discussions-to-survey-information&quot;&gt;(1) Reading Online Community Discussions to Survey Information&lt;/h2&gt;
+
+&lt;p&gt;At the broadest level, I like to stay abreast of new technologies and events by following topics of discussion. For technology, this tends to focus around sites like Hacker News or HN. HN is especially useful due to the start up company participants on the site because (a) there are so many start ups, (b) they don’t have legacy technolgy stacks to work with and (c) they have to iterate fast and try different things before finding a product market fit or raising their next funding round. These things lead to discussion of many technologies and how successful they are.&lt;/p&gt;
+
+&lt;h2 id=&quot;reading-case-studies-to-understand-specific-experiences&quot;&gt;(2) Reading Case Studies to Understand Specific Experiences&lt;/h2&gt;
+
+&lt;p&gt;Once I have an idea of a topic I want to learn, then I start reading articles on it including blog articles for open source projects and reviews for commercial projects. Quantity wise, I spend more time reading about open source projects but there are some commercial projects that I want to get up to speed on.&lt;/p&gt;
+
+&lt;p&gt;One recent example is my desire to learn more about organizations using Go in production. After reading around I found the following blog articles of interest:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://zef.me/6191/the-march-towards-go&quot;&gt;The March Towards Go&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://sendgrid.com/blog/convince-company-go-golang/&quot;&gt;Sendgrid: How to Convince Your Company to Go With Golang&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://blog.iron.io/2013/03/how-we-went-from-30-servers-to-2-go.html&quot;&gt;Iron.io:  How We Went from 30 Servers to 2: Go &lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;using-free-trial-software-to-evaluate-solutions&quot;&gt;(3) Using Free Trial Software to Evaluate Solutions&lt;/h2&gt;
+
+&lt;p&gt;After deciding an area of interest and researching it, if there is an interest to learn more, then I start to use the software. For FOSS software, this is as simple as downloading it and installing it. For commercial software, it may mean using trial software or taking classes.&lt;/p&gt;
+
+&lt;p&gt;For languages, it is useful to get a proof of concept script running with enough functionality to try out different aspects of the language. As an example, I recently ported a Ruby script of my to Go and got to use many different, but commonly used (for me) aspects of the language. That’s not nearly enough to become proficient, but enough to get a feel for whether to move forward or not.&lt;/p&gt;
+
+&lt;h2 id=&quot;taking-classes-to-gain-foundation-knowledge&quot;&gt;(4) Taking Classes to Gain Foundation Knowledge&lt;/h2&gt;
+
+&lt;p&gt;Often times, it’s acceptable to just take a software library or piece of software and use it, but sometimes there is a substantial benefit to understanding the theory behind a solution. Learning the theory behind solutions has been made much easier in recent years by a growing amount of free training that is available from sites such as Coursera and Udacity as well as software and hardware vendors. I do sometimes pay for classes but I do try to limit that given the good options available. Some free classes I’ve taken recently include.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Coursera Machine Learning Class by Andrew Ng, Stanford: This is one of the most popular MOOC classes for machine learning and I found it provided a worthwhile introduction to the math behind some of the machine learning libraries I’ve been using.&lt;/li&gt;
+  &lt;li&gt;IBM Netezza Technical Mastery Test v1 (M87): This is a free class offered to IBM partners on using the Netezza data warehouse system. This was a great class that taught the fundamentals of Netezza and how the Postgres database was finetuned to support the Netezza hardware configuration of snippet arrays and FPGAs. A wonderful surprise (for the Sales Engineer and business person in me), was that these free classes are for business partners so they also include training on the benefits of the solution and how to sell it.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;This is my system for learning and I hope it was useful for you, but most of all, I found it to remember that most successful people have systems and use those systems to make decisions and prioritize their time. So feel free to use and adapt the above for yourself or create your own system to learn effectively with limited time.&lt;/p&gt;
+</description>
+        <pubDate>Mon, 18 Aug 2014 23:22:23 -0700</pubDate>
+        <link>https://grokify.github.io/learning/the-learning-pipeline</link>
+        <guid isPermaLink="true">https://grokify.github.io/learning/the-learning-pipeline</guid>
+        
+        
+        <category>learning</category>
+        
+      </item>
+    
+      <item>
+        <title>Litecoin Mining with Ubuntu</title>
+        <description>&lt;p&gt;This is a quick how-to on getting started with Litecoin mining on Ubuntu.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;h2 id=&quot;install-amd-catalyst-display-driver&quot;&gt;Install AMD Catalyst Display Driver&lt;/h2&gt;
+
+&lt;p&gt;To use the AMD card for video, download and install the &lt;a href=&quot;http://support.amd.com/de-de/download/desktop?os=Linux+x86&quot;&gt;AMD Catalyst Display Driver for Linux&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Install AMD Catalyst Display Driver&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;unzip amd-catalyst-13.12-linux-x86.x86_64.zip
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;chmod +x amd-catalyst-13.12-linux-x86.x86_64.run
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;./amd-catalyst-13.12-linux-x86.x86_64.run &lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;install-amd-opencl&quot;&gt;Install AMD OpenCL&lt;/h2&gt;
+
+&lt;h2 id=&quot;install-cgminer&quot;&gt;Install CGminer&lt;/h2&gt;
+
+&lt;p&gt;To install CGminer for GPU mining we will need header files from the AMD Display Library (ADL) SDK so download it from the &lt;a href=&quot;http://developer.amd.com/tools-and-sdks/graphics-development/display-library-adl-sdk/&quot;&gt;AMD ADL page&lt;/a&gt;. You can download CGminer from either &lt;a href=&quot;http://ck.kolivas.org/apps/cgminer/3.7/cgminer-3.7.2.tar.bz2&quot;&gt;Con Koliva’s personal website&lt;/a&gt; or &lt;a href=&quot;https://github.com/ckolivas/cgminer/archive/v3.7.2.tar.gz&quot;&gt;Github&lt;/a&gt;. Github is used below.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;Install CGminer with ADL&lt;/em&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;unzip ADL_SDK_6.0.zip -d ADL_SDK_6.0
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;wget https://github.com/ckolivas/cgminer/archive/v3.7.2.tar.gz -O cgminer-3.7.2.tgz
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;tar xvfz cgminer-3.7.2.tgz
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;cp -p ADL_SDK_6.0/include/&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt;.&lt;span class=&quot;k&quot;&gt;*&lt;/span&gt; cgminer-3.7.2/ADL_SDK/
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;cd &lt;/span&gt;cgminer-3.7.2
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;./autogen.sh --enable-scrypt --enable-opencl
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;sudo make install&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;After autogen, you should see something like the following:&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;CGminer &lt;code class=&quot;highlighter-rouge&quot;&gt;autogen.sh&lt;/code&gt; results&lt;/em&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;------------------------------------------------------------------------
+cgminer 3.7.2
+------------------------------------------------------------------------
+
+Configuration Options Summary:
+
+  libcurl&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;GBT+getwork&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;.: Enabled: -lcurl  
+  curses.TUI...........: FOUND: -lncurses
+  OpenCL...............: FOUND. GPU mining support enabled
+  scrypt...............: Enabled
+  ADL..................: SDK found, GPU monitoring support enabled
+
+  Avalon.ASICs.........: Disabled
+  BFL.ASICs............: Disabled
+  KnC.ASICs............: Disabled
+  BitForce.FPGAs.......: Disabled
+  BitFury.ASICs........: Disabled
+  Hashfast.ASICs.......: Disabled
+  Icarus.ASICs/FPGAs...: Disabled
+  Klondike.ASICs.......: Disabled
+  ModMiner.FPGAs.......: Disabled
+
+Compilation............: make &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;or gmake&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  CPPFLAGS.............: 
+  CFLAGS...............: -g -O2
+  LDFLAGS..............:  -lpthread
+  LDADD................: -ldl -lcurl   compat/jansson-2.5/src/.libs/libjansson.a -lpthread -L/opt/AMDAPP/lib/x86_64 -lOpenCL    -lm  -lrt
+
+Installation...........: make install &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;as root &lt;span class=&quot;k&quot;&gt;if &lt;/span&gt;needed, with &lt;span class=&quot;s1&quot;&gt;&#39;su&#39;&lt;/span&gt; or &lt;span class=&quot;s1&quot;&gt;&#39;sudo&#39;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
+  prefix...............: /usr/local&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;create-the-shell-script&quot;&gt;Create the Shell Script&lt;/h2&gt;
+
+&lt;p&gt;Create &lt;code class=&quot;highlighter-rouge&quot;&gt;cgminer.sh&lt;/code&gt; to set ENV&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-sh&quot; data-lang=&quot;sh&quot;&gt;&lt;span class=&quot;c&quot;&gt;#!/bin/sh&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;DISPLAY&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;:0
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;GPU_MAX_ALLOC_PERCENT&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;100
+&lt;span class=&quot;nb&quot;&gt;export &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;GPU_USE_SYNC_OBJECTS&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1
+/path/to/cgminer --scrypt --url&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;stratum+tcp://&amp;lt;fqdn1&amp;gt;:&amp;lt;port1&amp;gt; --userpass&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;lt;user1&amp;gt;:&amp;lt;pass1&amp;gt; --url&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;stratum+tcp://&amp;lt;fqdn2&amp;gt;:&amp;lt;port2&amp;gt; --userpass&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&amp;lt;user2&amp;gt;:&amp;lt;pass2&amp;gt; --failover-only --thread-concurrency&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;22400 --intensity&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;20 --temp-target 80 --temp-cutoff 85 --gpu-po
+wertune 20 --thread-concurrency 24000 --gpu-engine 1100&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;h2 id=&quot;happy-mining&quot;&gt;Happy Mining!&lt;/h2&gt;
+
+&lt;p&gt;That’s all there is to it. Happy mining!&lt;/p&gt;
+</description>
+        <pubDate>Sun, 12 Jan 2014 16:53:32 -0800</pubDate>
+        <link>https://grokify.github.io/litecoin/mining-with-ubuntu</link>
+        <guid isPermaLink="true">https://grokify.github.io/litecoin/mining-with-ubuntu</guid>
+        
+        
+        <category>litecoin</category>
+        
+      </item>
+    
+      <item>
+        <title>Operations Glossary</title>
+        <description>&lt;p&gt;As with any field, it is important to have clear terms and definitions so people can communicate clearly and effectively. This page will serve as an ongoing glossary to cover common terms in IT Operations.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;The definitions for this page will be from a number of sources over time, but is currently from the Visible Ops Handbook which I’m in the process of reading.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.amazon.com/The-Visible-Ops-Handbook-Implementing/dp/0975568612&quot;&gt;The Visible Ops Handbook:**Implementing ITIL in 4 Practical and Auditable Steps&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;glossary&quot;&gt;Glossary&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Availability:&lt;/strong&gt; Typically stated as the ratio of the time that the system is operating within acceptable bounds divided by the total possible time.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Change Advisory Board/Emergency Committee (CAB/EC):&lt;/strong&gt; When there is an urgent or emergency change and the entire CAB cannot be convened, this is a defined smaller group of stakeholders who can review the change request and make a proper decision as to implementation. Their decision should then be reviewed when the CAB next convenes.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Change Success Rate (CSR):&lt;/strong&gt; The ration of successful changes to total changes. This metric shows the relative effectiveness of the change management process.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Configuration Drift:&lt;/strong&gt; The tendency of configurations to change over time. For example, a server’s configuration is most certinaly known when it is first released. As time goes on, patches get applied, and there is human intervention. As these changes accumulate, undocumented changes may have occurred and the actual configuration has thus “drifted” away from the known configuration.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Configuration Item (CI):&lt;/strong&gt; One discrete build that is tracked. It may be a base component that can not be further divided or an assembly made up of other configuration items. CIs can be hardware, software, documentation or a combination thereof.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Configuration Management Database (CMDB):&lt;/strong&gt; A system used to track configuration items, requests for change, work orders, errors, relationships, etc. The definition is often nebulous as the exact implementation varies across organizations. Fundamentally, it is the core system(s) that tracks all activities including service levels.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Defense-in-Depth:&lt;/strong&gt; A security strategy of using many layers of defense as opposed to relying on fewer layers, perhaps even just a single layer. The thought process is that by using layers, each provides an additional level of security should the preceding barrier be breached.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Definitive Software Library (DSL):&lt;/strong&gt; A repository of authorized software that is secure and has version control. Software may only be added or removed from the library through formal processes.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Detective Control:&lt;/strong&gt; Processes or systems that review records to determine activity. In IT, a change monitoring and reporting system that reviews configurations against known standards on a periodic basis and reports observed changes is an example of a detective control. Likewise, a manual review of a log file looking for anomalies is an example of a detective control.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Diff:&lt;/strong&gt; To create/detect a delta or “difference” between two items. Take lists “ABC” and “CDE”. The diff is “ABDE” as they are unique to each list while “C” is common in both lists.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Domain Name Server (DNS):&lt;/strong&gt; A server application used to map hostnames to Internet Protocol (IP) addresses.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Dynamic Host Configuration Protocol (DHCP):&lt;/strong&gt; A protocol that automatically communicates network configuration settings from a central host to distributed assets, which are configured to use the protocol to obtain their Internet addresses, domain name servers, gateways, etc.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Forward Schedule of Change (FSC):&lt;/strong&gt; A schedule that contains details of all changes and their proposed implementation dates. Items are added to it through the approved change control process.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Information Technology Infrastructure Library (ITIL):&lt;/strong&gt; A collection of best practices codified in seven books by the Office of Government Commerce in the UK. &lt;a href=&quot;http://www.ogc.gov.uk/index.asp?id=2261&quot;&gt;http://www.ogc.gov.uk/index.asp?id=2261&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;IT Process Institute (ITPI):&lt;/strong&gt; An independent research and membership organization engaged in three principle areas of activity:**Ressearch, Benchmarking and the Development of prescriptive guidance fo practitioners and business executives.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Mean Time Between Failures (MTBF):&lt;/strong&gt; The average time between failures of the asset.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Mean Time To Repair (MTTR):&lt;/strong&gt; The average time it takes to restore service once an asset has failed or dropped below acceptable service levels.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Request For Change (RFC):&lt;/strong&gt; A formally submitted document, or electronic record, that identifies the relevant information surrounding the desired change.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Revision Control System (RCS):&lt;/strong&gt; An application that tracks versions of files or potentially another form of data through the use of access and check-in/check-out controls. Depending on the system, a baseline with subsequent differentials may be tracked or each new version is stored and assigned a unique ID.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Shelf Life/Release Shelf Life (RSL):&lt;/strong&gt; Defines how long a build will remain viable before becoming obsolete.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Standard Change:&lt;/strong&gt; Changes with readily known risks that are regularly made during the course of business, and whose outcomes are predictable.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sun, 12 Jan 2014 14:30:36 -0800</pubDate>
+        <link>https://grokify.github.io/operations/glossary</link>
+        <guid isPermaLink="true">https://grokify.github.io/operations/glossary</guid>
+        
+        
+        <category>operations</category>
+        
+      </item>
+    
+      <item>
+        <title>Wildcard Subject Alternate Name SSL/TLS Certificates</title>
+        <description>&lt;p&gt;Managing hundreds or thousands of servers for SSL/TLS can be a challenge due to the potential number of certificates involved. To address this, I recently looked into combining two common management features of certificates, wildcard domain names and subject alternative names (SANs) into a “Wildcard SAN” certificate. Eventually I found that these certificates are in use but knowledge of them does not appear to be widespread.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;The conclusion is that wildcard SAN certificates are supported by public and private CAs, are in use at major websites (Google and Yahoo) and appear to be safe for SMTP with some known limitations.&lt;/p&gt;
+
+&lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
+
+&lt;p&gt;In SSL/TLS, domain name verification occurs by matching the FQDN of the system with the name specified in the certificate. The certificate name can be in two locations, either the Subject or the Subject Alternative Name (&lt;code class=&quot;highlighter-rouge&quot;&gt;subjectAltName&lt;/code&gt;) extension. When present in the Subject, the name that is used is the Common Name (CN) component of the X.500 Distinguished Name (DN). A second place that is often checked is the Subject Alternative Name (SAN) extension which can contain a list of DNS names, IP addresses, email addresses or URIs.&lt;/p&gt;
+
+&lt;p&gt;Both wildcard domains and subject alternative names are techniques to enable certificates to authenticate more than one domain name. This is often useful as it is common for a system to have more than one domain name.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Wildcard Domains:&lt;/strong&gt; Wildcard domains such as &lt;code class=&quot;highlighter-rouge&quot;&gt;*.example.com&lt;/code&gt; are useful when protecting multiple services on one domain such as &lt;code class=&quot;highlighter-rouge&quot;&gt;www.example.com&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;mail.example.com&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;mx.example.com&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;ftp.example.com&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;blog.example.com&lt;/code&gt;, etc. however it has several limitations:
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;Non-zero length subdomain:&lt;/strong&gt; first is that many sites will use a combination of &lt;code class=&quot;highlighter-rouge&quot;&gt;www.example.com&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;example.com&lt;/code&gt; and a &lt;code class=&quot;highlighter-rouge&quot;&gt;*.example.com&lt;/code&gt; wildcard will not match the latter.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Only flat subdomain support:&lt;/strong&gt; wildcards will not support multiple subdomains, for example &lt;code class=&quot;highlighter-rouge&quot;&gt;*.m.example.com&lt;/code&gt; will not be matched by &lt;code class=&quot;highlighter-rouge&quot;&gt;*.example.com&lt;/code&gt;.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Only one domain:&lt;/strong&gt; finally, &lt;code class=&quot;highlighter-rouge&quot;&gt;*.example.com&lt;/code&gt; will not support an entirely different subdomain such as &lt;code class=&quot;highlighter-rouge&quot;&gt;foobar.com&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Subject Alternative Name:&lt;/strong&gt; Using the X.509 &lt;code class=&quot;highlighter-rouge&quot;&gt;subjectAltName&lt;/code&gt; extension has been useful to address some of the limiations of wildcard domains, namely they can contain multiple FQDNs of all types so names with differing numbers of subdomains and entirely different domains can be suppored. To make SANs even more useful, the goal of this effort was to validate the support for using wildcard domain names in the SAN.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;ietf-standards-support&quot;&gt;IETF Standards Support&lt;/h2&gt;
+
+&lt;p&gt;Before starting, the first place to check was support in the X.509 PKI standards and &lt;a href=&quot;http://www.ietf.org/&quot;&gt;IETF&lt;/a&gt; &lt;a href=&quot;http://tools.ietf.org/search/rfc3280#section-4.2.1.7&quot;&gt;RFC 3280: Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile&lt;/a&gt; does indicate that wildcard SANs may be used in certificates but are not defined within the RFC:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;the semantics of subject alternative names that include wildcard characters (e.g., as a placeholder for a set of names) are not addressed by this specification.  Applications with specific requirements MAY use such names, but they must define the semantics.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;in-the-lab---openssl&quot;&gt;In the Lab - OpenSSL&lt;/h2&gt;
+
+&lt;p&gt;To try this in the lab, we create a CSR using OpenSSL by creating a config file to be referenced by the &lt;code class=&quot;highlighter-rouge&quot;&gt;openssl req&lt;/code&gt; command which can generate a key pair and Certificate Signing Request (CSR) with the WSANs included as shown below:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;create OpenSSL req.cfg&lt;/strong&gt;&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bbcode&quot; data-lang=&quot;bbcode&quot;&gt;[req]
+req_extensions = v3_req
+[v3_req]
+subjectAltName = @alt_names
+[alt_names]
+DNS.1 = *.example.com
+DNS.2 = *.m.example.com
+DNS.3 = example.com&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Now generate the keypair and CSR:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;openssl req -new -newkey rsa:2048 -sha256 -nodes -out keypair.csr -keyout keypair.key -config req.cfg&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Once the CSR is available, use it to make a certificate request from a private CA to test support such as Microsoft Certificate Authority.&lt;/p&gt;
+
+&lt;p&gt;Finally, use the certificate in an application to verify successful SSL/TLS connections. For example, using the Apache web server, we can reference the key and certificate in the conf file:&lt;/p&gt;
+
+&lt;p&gt;Apache conf&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-xml&quot; data-lang=&quot;xml&quot;&gt;LoadModule ssl_module modules/mod_ssl.so
+Listen 443
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;VirtualHost&lt;/span&gt; &lt;span class=&quot;err&quot;&gt;*:443&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+   ServerName www.example.com
+   SSLEngine on
+   SSLCertificateFile /path/to/keypair.cert
+   SSLCertificateKeyFile /path/to/keypair.key
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/VirtualHost&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Finally, connect a web browser to the web server and see if the certificate validates, first importing and trusting the private CA root certificate of course.&lt;/p&gt;
+
+&lt;h2 id=&quot;in-the-wild---google-and-yahoo&quot;&gt;In the Wild - Google and Yahoo!&lt;/h2&gt;
+
+&lt;p&gt;Now that it has been established that certificates may have wildcard SANs and they can be issued, it made sense to see if these certificates were used in the wild. Investigating public CA websites indicated that most websites offered either wildcard CN certificates or explicit FQDN SAN certificates but not a combination of wildcard SAN certificates.&lt;/p&gt;
+
+&lt;p&gt;Undeterred, I checked to see if anyone was using these in the wild. Information was thin but I did find a single post referencing Google on StackOverflow for YouTube. Pulling up their certificate and then Yahoo!’s indicated that these two services make widespread use of wildcard SAN certificates.&lt;/p&gt;
+
+&lt;h3 id=&quot;google-wildcard-san-certificate&quot;&gt;Google Wildcard SAN Certificate&lt;/h3&gt;
+
+&lt;p&gt;Examing the Google certificate provided some good insight in that:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;multiple different domains are supported&lt;/li&gt;
+  &lt;li&gt;multiple levels of subdomains are supported&lt;/li&gt;
+  &lt;li&gt;popular websites are supported&lt;/li&gt;
+  &lt;li&gt;many SANs can be supported&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This indicated popular browser support, however, it did not indicate popular issuance of such certificates as the certificate is not signed directly by a public CA but is signed by the &lt;code class=&quot;highlighter-rouge&quot;&gt;Google Internet Authority G2&lt;/code&gt; Certificate Authority, a subordinate CA under GeoTrust. Some Internet reports have indicated that subordinate CA certificates also cost in the range of $150,000 to set up and $75,000 / year to maintain which makes it unavaialble as a mainstream solution and there are &lt;a href=&quot;https://blog.mozilla.org/security/2013/02/15/announcing-version-2-1-of-mozilla-ca-certificate-policy/&quot;&gt;technical constraints&lt;/a&gt; as well.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/pimages/PKI_SS_Multiple-Wildcard-SAN_Google.png&quot; alt=&quot;Google cert&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;yahoo-wildcard-san-certificate&quot;&gt;Yahoo! Wildcard SAN Certificate&lt;/h3&gt;
+
+&lt;p&gt;Finding the Google certificate was a strong indicator that these certificates are used by relying applications, however, we still need to see if public CAs will offer them. Moving on to Yahoo! we see that Yahoo! also uses a wildcard SAN certificate and this one is signed directly by DigiCert. From the Yahoo! certificate we learn that:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;at least one public CA, DigiCert, offers these certificates&lt;/li&gt;
+  &lt;li&gt;a mix of non-wildcard and wildcard SANs can be supported&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/pimages/PKI_SS_Multiple-Wildcard-SAN_Yahoo.png&quot; alt=&quot;Yahoo! cert&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;public-certificate-authority-offerings&quot;&gt;Public Certificate Authority Offerings&lt;/h2&gt;
+
+&lt;p&gt;Knowing that WSAN certificates are in the wild and offered by at least one CA enabled me to reach out directly to two public CAs and inquire about this feature even if it was not listed on their websites:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;DigiCert:&lt;/strong&gt; The first CA I reached out to was &lt;a href=&quot;http://www.digicert.com/&quot;&gt;DigiCert&lt;/a&gt; because they supplied the Yahoo! certificate. To purchase a WSAN certifiate, you need to purchase individual wildcard certificates and then contact DigiCert to have those combined into a single certificate.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;GlobalSign:&lt;/strong&gt; I also reached out to &lt;a href=&quot;https://www.globalsign.com/&quot;&gt;GlobalSign&lt;/a&gt; as I have a colleague there and I was informed that they also support WSAN certificates but as an unpublished offering due to customer demand.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;use-cases&quot;&gt;Use Cases&lt;/h2&gt;
+
+&lt;p&gt;TLS/SSL certificates are used for a variety of purposes and for this exercise, I investigated both HTTPS and SMTP. It appears WSAN certificates are safe to use for HTTPS with web browsers and may be safe for SMTP.&lt;/p&gt;
+
+&lt;h3 id=&quot;https&quot;&gt;&lt;strong&gt;HTTPS&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;Given the widespread use of WSAN certificates by Google and Yahoo! on their popular websites, it seems reasonable to say that these certificates are supported by common web browsers. Mobile use still needs to be investigated.&lt;/p&gt;
+
+&lt;h3 id=&quot;smtp&quot;&gt;&lt;strong&gt;SMTP&lt;/strong&gt;&lt;/h3&gt;
+
+&lt;p&gt;SMTP over TLS is defined by IETF &lt;a href=&quot;http://tools.ietf.org/html/rfc3207&quot;&gt;RFC 3207&lt;/a&gt;. It appears that some mail servers have issues with wildcard certificates. While Sendmail is known not to support SAN, representatives from public CAs and my professional experience have indicated no issues, possibly given the level of TLS name verification current in use.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;** Exchange: ** Exchange 2007 and later requires certificates that have explicit internal FQDNs.&lt;/li&gt;
+  &lt;li&gt;** Sendmail: ** Sendmail does not currently support name validation using SANs.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;From the above, we can conclude:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;wildcard SAN (WSAN) certificates are supported by IETF RFC 3280&lt;/li&gt;
+  &lt;li&gt;WSAN certs are in widespread use for HTTPS&lt;/li&gt;
+  &lt;li&gt;WSAN certs can be used for SMTP&lt;/li&gt;
+  &lt;li&gt;WSAN CSRs can be generated by OpenSSL&lt;/li&gt;
+  &lt;li&gt;Public CAs (DigiCert, GlobalSign) sign WSAN certificates&lt;/li&gt;
+  &lt;li&gt;Micrsoft CA signs WSAN certificates&lt;/li&gt;
+  &lt;li&gt;popular websites use WSAN certificates&lt;/li&gt;
+  &lt;li&gt;multiple different domains are supported&lt;/li&gt;
+  &lt;li&gt;multiple levels of subdomains are supported&lt;/li&gt;
+  &lt;li&gt;many SANs can be supported within the SAN extension&lt;/li&gt;
+  &lt;li&gt;a mix of non-wildcard and wildcard SANs can be supported&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;This was an useful exercise for me from an operations and certifiate management perspective. If you have experience with these certificates, please provide a note below.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 12 Jan 2014 09:33:16 -0800</pubDate>
+        <link>https://grokify.github.io/security/wildcard-subject-alternative-name-ssl-tls-certificates</link>
+        <guid isPermaLink="true">https://grokify.github.io/security/wildcard-subject-alternative-name-ssl-tls-certificates</guid>
+        
+        
+        <category>security</category>
+        
+      </item>
+    
+      <item>
+        <title>The Phoenix Project: A Novel about IT, DevOps, and Helping Your Business Win</title>
+        <description>&lt;p&gt;Once an organization gets to a certain size, it becomes critically important to keep operations nimble to deliver against customer expectations. &lt;a href=&quot;http://www.amazon.com/The-Phoenix-Project-Helping-Business/dp/0988262592/&quot;&gt;The Phoenix Project: A Novel about IT, DevOps, and Helping Your Business Win&lt;/a&gt; is a fictional story that helps one understand the complexities of operations.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;It is wrtten by &lt;a href=&quot;https://twitter.com/RealGeneKim&quot;&gt;Gene Kim&lt;/a&gt;, &lt;a href=&quot;https://twitter.com/kevinbehr&quot;&gt;Kevin Behr&lt;/a&gt;, and &lt;a href=&quot;https://twitter.com/gspaff&quot;&gt;George Spafford&lt;/a&gt; and is a fictional story about how a company deals with IT Operations challenges and migrating from a dysfunctional organization into a high performing and optimized one using the concepts of &lt;a href=&quot;http://en.wikipedia.org/wiki/Total_quality_management&quot;&gt;Total Quality Mangement&lt;/a&gt;, &lt;a href=&quot;http://en.wikipedia.org/wiki/Lean_manufacturing&quot;&gt;Lean&lt;/a&gt;, and &lt;a href=&quot;http://en.wikipedia.org/wiki/Systems_engineering&quot;&gt;Systems Engineering&lt;/a&gt;. It has been called a modern day version of &lt;a href=&quot;http://www.amazon.com/The-Goal-Process-Ongoing-Improvement/dp/0884271951/&quot;&gt;The Goal: A Process of Ongoing Improvement Paperback&lt;/a&gt; by &lt;a href=&quot;http://en.wikipedia.org/wiki/Eliyahu_M._Goldratt&quot;&gt;Eliyahu M. Goldratt&lt;/a&gt; and is the number 1 seller in its categories on Amazon.&lt;/p&gt;
+
+&lt;p&gt;** Operation goals for the enterprise **&lt;/p&gt;
+
+&lt;p&gt;Although, the book doesn’t provide a high level framework, it does a good job of telling a a fictional company addresses the 5 Operations goals outlined by &lt;a href=&quot;http://en.wikipedia.org/wiki/COBIT&quot;&gt;COBIT&lt;/a&gt;, a useful framework for thinking about operation goals:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Optimization of business process functionality&lt;/li&gt;
+  &lt;li&gt;Optimization of business process costs&lt;/li&gt;
+  &lt;li&gt;Managed business change programs&lt;/li&gt;
+  &lt;li&gt;Operational and staff productivity&lt;/li&gt;
+  &lt;li&gt;Compliance with internal policies&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;description&quot;&gt;Description&lt;/h2&gt;
+
+&lt;p&gt;This book focuses on creating a story in which concepts such as TQM, Lean and Systems Engineerign can be introduced and dicussed. Situations are described from multiple points of view including perspectives of the CEO, CFO, marketing, product management, development, information security, as well as operations itself.&lt;/p&gt;
+
+&lt;p&gt;As an overview, it is a quick read and light on details but where it shines is in telling a story and establishing people and their priorities. It does a good job of discussing operations challenges and providing a manufacturing analogy of work process, including how to manage constraints and blocking work.&lt;/p&gt;
+
+&lt;h2 id=&quot;concepts&quot;&gt;Concepts&lt;/h2&gt;
+
+&lt;h3 id=&quot;types-of-operations-work&quot;&gt;Types of Operations Work&lt;/h3&gt;
+
+&lt;p&gt;Early in the book, attention is spent on describing the types of work within an organization.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Business projects&lt;/li&gt;
+  &lt;li&gt;IT projects&lt;/li&gt;
+  &lt;li&gt;Changes&lt;/li&gt;
+  &lt;li&gt;Unplanned work&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;theory-of-constraints&quot;&gt;Theory of Constraints&lt;/h3&gt;
+
+&lt;p&gt;The Theory of Constraints focuses on addressing constraints which are the slowest part of the process and gate the overall efficiency of the process. The goal is to work on optimizing the work around constraits to use those resources the most efficiently. A key component of this theory is the Five Focusing Steps:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Identify the constraints&lt;/li&gt;
+  &lt;li&gt;Exploit the constraints: “make sure that the constraint is not allowed to waste any time. Ever. It should not be waiting for any other resource for anything, and it should always be working on the highest priority commitment the IT Operations organization has made to the rest of the enterprise. Always.”&lt;/li&gt;
+  &lt;li&gt;Subordinate everything else to the constraint&lt;/li&gt;
+  &lt;li&gt;Elevate the constraints&lt;/li&gt;
+  &lt;li&gt;Find the next constraint and repeat&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Additional Reading: &lt;a href=&quot;http://en.wikipedia.org/wiki/Theory_of_constraints&quot;&gt;Wikipedia&lt;/a&gt;, &lt;a href=&quot;http://www.dbrmfg.co.nz/Bottom%20Line%20Accounting%20for%20Change%205%20Step.htm&quot;&gt;Comparison with Newbold and Schragenheim&lt;/a&gt;, &lt;a href=&quot;http://blog.nayima.be/2009/04/16/the-theory-of-constraints-five-focusing-steps-in-action/&quot;&gt;Description&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;excerpts&quot;&gt;Excerpts&lt;/h2&gt;
+
+&lt;p&gt;The following are some excerpts from the book that I found useful. The Kindle is a great way to take notes this way.&lt;/p&gt;
+
+&lt;p&gt;Change Management&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A ‘change’ is any activity that is physical,logical, or virtual to applications, databases, operating systems, networks, or hardware that could impact services being delivered.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Preventive Work&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Properly elevating preventive work is at the heart of programs like Total Productive Maintenance, which has been embraced by the Lean Community. TPM insists that we do whatever it takes to assure machine availability by elevating maintenance…. Improving daily work is even more important than doing daily work…. it almost doesn’t matter what you improve, as long as you’re improving something. Why? Because if you are not improving, entropy guarantees that you are actually getting worse, which ensures that there is no path to zero errors, zero work-related accidents, and zero loss.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Unplanned Work&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Unplanned work kills your ability to do lanned work, so you must always do whatever it takes to eradicate it.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Work Components&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Every work center is made up of four things: the machine, the man, the method, and the measures.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Resilience Engineering&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Resilience engineering tells us that we should routinely inject faults into the system, doing them frequently, to make them less painful.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;summary&quot;&gt;Summary&lt;/h3&gt;
+
+&lt;p&gt;Overall, this is a good overview book for understanding the cast of characters within a company as they interact with operations and is a good book for understanding the challenges operations face. Armed with this context, additional reading is necessary to dive into the details of solving these multiple goals. I give this a 5 out of 5 stars. It’s a quick fun read (just a few days part tie on the Kindle) and provides some context for the challenges Operations faces.&lt;/p&gt;
+
+&lt;h2 id=&quot;further-reading&quot;&gt;Further Reading&lt;/h2&gt;
+
+&lt;p&gt;The Phoenix Project references a number of works within the story including the following:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.amazon.com/The-Goal-Process-Ongoing-Improvement/dp/0884271951/&quot;&gt;The Goal: A Process of Ongoing Improvement Paperback&lt;/a&gt; by &lt;a href=&quot;http://en.wikipedia.org/wiki/Eliyahu_M._Goldratt&quot;&gt;Eliyahu M. Goldratt&lt;/a&gt; , &lt;a href=&quot;http://www.jeffcox.com/&quot;&gt;Jeff Cox&lt;/a&gt; and David Whitford. Also see this book on &lt;a href=&quot;http://en.wikipedia.org/wiki/The_Goal_%28novel%29&quot;&gt;Wikipedia&lt;/a&gt;.&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.amazon.com/The-Five-Dysfunctions-Team-Leadership/dp/0787960756/&quot;&gt;The Five Dysfunctions of a Team: A Leadership Fable&lt;/a&gt; by &lt;a href=&quot;http://en.wikipedia.org/wiki/Patrick_Lencioni&quot;&gt;Patrick Lencioni&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The following books are related operations books written by the authors:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.amazon.com/The-Visible-Ops-Handbook-Implementing/dp/0975568612/&quot;&gt;The Visible Ops Handbook: Implementing ITIL in 4 Practical and Auditable Steps&lt;/a&gt; by &lt;a href=&quot;https://twitter.com/kevinbehr&quot;&gt;Kevin Behr&lt;/a&gt;, &lt;a href=&quot;https://twitter.com/RealGeneKim&quot;&gt;Gene Kim&lt;/a&gt;, and &lt;a href=&quot;https://twitter.com/gspaff&quot;&gt;George Spafford&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.amazon.com/Visible-Ops-Security-Operations-Objectives/dp/0975568620/&quot;&gt;Visible Ops Security: Achieving Common Security and IT Operations Objectives in 4 Practical Steps&lt;/a&gt; by &lt;a href=&quot;https://twitter.com/RealGeneKim&quot;&gt;Gene Kim&lt;/a&gt;, Paul Love and &lt;a href=&quot;https://twitter.com/gspaff&quot;&gt;George Spafford&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Additional articles on this book include:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;http://en.wikipedia.org/wiki/The_Phoenix_Project:_A_Novel_About_IT,_DevOps,_and_Helping_Your_Business_Win&quot;&gt;Wikipedia&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://blog.perimeterusa.com/3206/&quot;&gt;Andrew Jaquith&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        <pubDate>Sun, 12 Jan 2014 01:48:43 -0800</pubDate>
+        <link>https://grokify.github.io/operations/the-phoenix-project</link>
+        <guid isPermaLink="true">https://grokify.github.io/operations/the-phoenix-project</guid>
+        
+        
+        <category>operations</category>
+        
+      </item>
+    
+      <item>
+        <title>Yahoo Compromised to Deliver Exploit Kits</title>
+        <description>&lt;p&gt;On February 3, &lt;a href=&quot;https://www.fox-it.com/en/&quot;&gt;Fox-IT&lt;/a&gt; posted a blog article on &lt;a href=&quot;http://blog.fox-it.com/2014/01/03/malicious-advertisements-served-via-yahoo/&quot;&gt;malicious advertisements being served via Yahoo!&lt;/a&gt; which was then discussed by &lt;a href=&quot;http://www.cnn.com/2014/01/05/tech/yahoo-malware-attack/index.html&quot;&gt;CNN&lt;/a&gt;. The compromise was active from December 31, 2013 to February 3, 2014.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;Fox-IT identified a single IP address that was used to deliver the exploit kit and based on their same traffic, they estimated visits to the site at around 300k/hr. With a typical infection rate of 9%, this would result in a rate of 27,000 infections per hour. The countries most affected were identified as are Romania, Great Brittain and France&lt;/p&gt;
+
+&lt;h2 id=&quot;infection-flow-chart&quot;&gt;Infection Flow Chart&lt;/h2&gt;
+
+&lt;p&gt;The following chart is from Fox-IT’s &lt;a href=&quot;http://blog.fox-it.com/2014/01/03/malicious-advertisements-served-via-yahoo/&quot;&gt;blog article&lt;/a&gt; and shows how an ad injected in a user’s web page browsing ultimately leads to the installation of an exploit kit.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/pimages/diagram_flowchart_yahoo-ad-server-compromise_20131231.jpg&quot; alt=&quot;Yahoo Ad Server Compromise&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;malware--exploit-kits&quot;&gt;Malware / Exploit Kits&lt;/h2&gt;
+
+&lt;p&gt;Fox-IT indicates that a number of different exploit kits were used including the ZeuS kit which has been posted on &lt;a href=&quot;https://github.com/Visgean/Zeus&quot;&gt;Github&lt;/a&gt;.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 07 Jan 2014 07:37:09 -0800</pubDate>
+        <link>https://grokify.github.io/security/yahoo-compromised-to-deliver-exploit-kits</link>
+        <guid isPermaLink="true">https://grokify.github.io/security/yahoo-compromised-to-deliver-exploit-kits</guid>
+        
+        
+        <category>security</category>
+        
+      </item>
+    
+      <item>
+        <title>Bitcoin Is Now Supported in Encode::Base58::GMP</title>
+        <description>&lt;p&gt;Base58 is a human-readable, protocol-safe encoding useful for case-sensitive encodings in cross-application situations such as urls, databases, file systems, full-text indexes and others.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;It was popularized by &lt;a href=&quot;http://www.flickr.com/groups/api/discuss/72157616713786392&quot;&gt;Flickr&lt;/a&gt; and also used by &lt;a href=&quot;https://en.bitcoin.it/wiki/Base58Check_encoding&quot;&gt;Bitcoin&lt;/a&gt; and &lt;a href=&quot;http://grokbase.com&quot;&gt;Grokbase&lt;/a&gt;. Back in 2011, I open sourced Base58 libraries using the &lt;a href=&quot;http://gmplib.org/&quot;&gt;GNU MP Big Num Library (GMP)&lt;/a&gt; for &lt;a href=&quot;https://metacpan.org/module/Encode::Base58::GMP&quot;&gt;Perl&lt;/a&gt; and &lt;a href=&quot;http://rubygems.org/gems/base58_gmp&quot;&gt;Ruby&lt;/a&gt; to create Base58 encodings. At the time, the Ruby library supported Bitcoin, Flickr and GMP alphabets while the Perl library only supported the Flickr and GMP alphabets. With &lt;a href=&quot;https://metacpan.org/module/Encode::Base58::GMP&quot;&gt;Encode:Base58::GMP&lt;/a&gt; version 1.0, the Perl library now also supports the Bitcoin alphabet for decoding and encoding as well as conversion from and to the Flickr and GMP alphabets. Grokbase uses the Flickr alphabet so there’s no need for a separate library in the code.&lt;/p&gt;
+
+&lt;p&gt;In addition to Bitcoin support, the Perl library has now added a base58_from_to() function to generically transcode Base58 strings and has updated the md5_base58() function to create strings padded with leading zero values. The change to md5_base58() is not backward compatible so this is something to consider for an upgrade.&lt;/p&gt;
+
+&lt;p&gt;For a bit of background, the reason &lt;a href=&quot;https://metacpan.org/module/Encode::Base58::GMP&quot;&gt;Encode::Base58::GMP&lt;/a&gt; did not support Bitcoin in earlier releases is that I utilize the transliteration operator for the conversion and Perl does not support variables with the transliteration operator which I was using for implmentations in other languages at the time (Ruby, PHP, and Python). At the time, I didn’t find a solution to this other than hand-writing each conversion which I wanted to avoid so I left it out. Coincident to the recent Bitcoin activity, a &lt;a href=&quot;https://rt.cpan.org/Public/Bug/Display.html?id=84565&quot;&gt;bug report&lt;/a&gt; and &lt;a href=&quot;http://johnwang.com/base58-fast-hashing-with-gmp/&quot;&gt;blog comment&lt;/a&gt; were posted requesting this feature so I decided to look at this again. This time, I found the Perl solution is to use &lt;a href=&quot;http://www.perlmonks.org/?node_id=445971&quot;&gt;eval&lt;/a&gt; with optional pre-compile. I implemented the eval which looked clean but, in the end, I decided to release the hardcoded tr version.&lt;/p&gt;
+
+&lt;p&gt;Thanks to the Perl community for &lt;a href=&quot;https://metacpan.org/&quot;&gt;Metacpan&lt;/a&gt;, &lt;a href=&quot;https://rt.cpan.org/&quot;&gt;RT&lt;/a&gt;, &lt;a href=&quot;http://dzil.org/&quot;&gt;Distzilla&lt;/a&gt; and &lt;a href=&quot;http://www.cpantesters.org/distro/E/Encode-Base58-GMP.html#Encode-Base58-GMP-1.00&quot;&gt;CPAN Testers&lt;/a&gt; for making this update easy. Also thanks to Ingy for writing &lt;a href=&quot;https://metacpan.org/module/Test::Base&quot;&gt;Test::Base&lt;/a&gt; which makes Data Driven Testing a pleasure. If you are interested in Test::Base, this distribution includes an example of using external files in “t/03_md5-base58.t”.&lt;/p&gt;
+
+&lt;p&gt;Version 1.00 is now on CPAN so have fun.&lt;/p&gt;
+</description>
+        <pubDate>Thu, 02 May 2013 17:10:00 -0700</pubDate>
+        <link>https://grokify.github.io/bitcoin/now-supported-in-encode-base58-gmp</link>
+        <guid isPermaLink="true">https://grokify.github.io/bitcoin/now-supported-in-encode-base58-gmp</guid>
+        
+        
+      </item>
+    
+  </channel>
+</rss>

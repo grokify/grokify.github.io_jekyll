@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Operations Glossary</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="As with any field, it is important to have clear terms and definitions so people can communicate clearly and effectively. This page will serve as an ongoing glossary to cover common terms in IT Operations.
+
+">
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <!-- twitter meta -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@lauriswat" />
+    <meta name="twitter:title" content="Operations Glossary" />
+    <meta name="twitter:description" content="As with any field, it is important to have clear terms and definitions so people can communicate clearly and effectively. This page will serve as an ongoing glossary to cover common terms in IT Operations.
+
+" />
+    <meta name="twitter:url" content="https://grokify.github.io/operations-glossary" />
+    
+
+    <!-- google -->
+    <link rel="author" href="https://plus.google.com/u/1/106958955611683589420/posts"/>
+    <link rel="publisher" href="https://plus.google.com/u/1/106958955611683589420"/>
+    
+    
+
+    <link rel="canonical" href="https://grokify.github.io/operations-glossary">
+    <link rel="icon" type="image/png" href="/images/lambda-xl.png">
+
+    <!-- Custom CSS -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/lambda.css?v2.1">
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-32022445-1', 'auto');
+        ga('send', 'pageview');
+
+        var host = "lauris.github.io";
+        if ((host == window.location.host) && (window.location.protocol != "https:")) {
+            window.location.protocol = "https";
+        }
+    </script>
+
+</head>
+
+
+    <body>
+    
+    <div class="wrapper">
+
+      <header id="main-header">
+  <div id="site-title">
+    <i class="fa fa-rebel" style="font-size:150%"></i>
+    <a href="/">Grokify by John Wang</a>
+  </div>
+  <div class="links">
+  
+  <a href="/" class="page-link">Blog</a>
+  
+    
+  
+    
+      <a class="page-link"
+        href="/about/">About</a>
+    
+  
+    
+  
+    
+  
+  <a href="/feed.xml" target="_blank" class="page-link">RSS</a>
+  <a href="http://twitter.com/grokify" target="_blank" class="page-link">Twitter</a>
+  <a href="http://github.com/grokify/lauris.github.com"
+    target="_blank"
+    class="page-link github-link">
+    <i class="fa fa-github"></i>
+    Source</a>
+  </div>
+</header>
+
+      
+      <div id="content">
+        <div id="articles">
+          <div class="article-list">
+            <div class="entry">
+
+	<div class="entry-content">
+
+	  <header>
+	    <h1 class="entry-title"><a href="/operations-glossary">Operations Glossary</a></h1>
+	    <p class="entry-meta">Jan 12, 2014 • Category: Operations</p>
+	  </header>
+
+	  <article class="entry-body">
+	  	
+	  		<p>As with any field, it is important to have clear terms and definitions so people can communicate clearly and effectively. This page will serve as an ongoing glossary to cover common terms in IT Operations.</p>
+
+<!-- more -->
+
+<p>The definitions for this page will be from a number of sources over time, but is currently from the Visible Ops Handbook which I’m in the process of reading.</p>
+
+<ul>
+  <li><a href="http://www.amazon.com/The-Visible-Ops-Handbook-Implementing/dp/0975568612">The Visible Ops Handbook:**Implementing ITIL in 4 Practical and Auditable Steps</a></li>
+</ul>
+
+<h2 id="glossary">Glossary</h2>
+
+<ul>
+  <li><strong>Availability:</strong> Typically stated as the ratio of the time that the system is operating within acceptable bounds divided by the total possible time.</li>
+  <li><strong>Change Advisory Board/Emergency Committee (CAB/EC):</strong> When there is an urgent or emergency change and the entire CAB cannot be convened, this is a defined smaller group of stakeholders who can review the change request and make a proper decision as to implementation. Their decision should then be reviewed when the CAB next convenes.</li>
+  <li><strong>Change Success Rate (CSR):</strong> The ration of successful changes to total changes. This metric shows the relative effectiveness of the change management process.</li>
+  <li><strong>Configuration Drift:</strong> The tendency of configurations to change over time. For example, a server’s configuration is most certinaly known when it is first released. As time goes on, patches get applied, and there is human intervention. As these changes accumulate, undocumented changes may have occurred and the actual configuration has thus “drifted” away from the known configuration.</li>
+  <li><strong>Configuration Item (CI):</strong> One discrete build that is tracked. It may be a base component that can not be further divided or an assembly made up of other configuration items. CIs can be hardware, software, documentation or a combination thereof.</li>
+  <li><strong>Configuration Management Database (CMDB):</strong> A system used to track configuration items, requests for change, work orders, errors, relationships, etc. The definition is often nebulous as the exact implementation varies across organizations. Fundamentally, it is the core system(s) that tracks all activities including service levels.</li>
+  <li><strong>Defense-in-Depth:</strong> A security strategy of using many layers of defense as opposed to relying on fewer layers, perhaps even just a single layer. The thought process is that by using layers, each provides an additional level of security should the preceding barrier be breached.</li>
+  <li><strong>Definitive Software Library (DSL):</strong> A repository of authorized software that is secure and has version control. Software may only be added or removed from the library through formal processes.</li>
+  <li><strong>Detective Control:</strong> Processes or systems that review records to determine activity. In IT, a change monitoring and reporting system that reviews configurations against known standards on a periodic basis and reports observed changes is an example of a detective control. Likewise, a manual review of a log file looking for anomalies is an example of a detective control.</li>
+  <li><strong>Diff:</strong> To create/detect a delta or “difference” between two items. Take lists “ABC” and “CDE”. The diff is “ABDE” as they are unique to each list while “C” is common in both lists.</li>
+  <li><strong>Domain Name Server (DNS):</strong> A server application used to map hostnames to Internet Protocol (IP) addresses.</li>
+  <li><strong>Dynamic Host Configuration Protocol (DHCP):</strong> A protocol that automatically communicates network configuration settings from a central host to distributed assets, which are configured to use the protocol to obtain their Internet addresses, domain name servers, gateways, etc.</li>
+  <li><strong>Forward Schedule of Change (FSC):</strong> A schedule that contains details of all changes and their proposed implementation dates. Items are added to it through the approved change control process.</li>
+  <li><strong>Information Technology Infrastructure Library (ITIL):</strong> A collection of best practices codified in seven books by the Office of Government Commerce in the UK. <a href="http://www.ogc.gov.uk/index.asp?id=2261">http://www.ogc.gov.uk/index.asp?id=2261</a></li>
+  <li><strong>IT Process Institute (ITPI):</strong> An independent research and membership organization engaged in three principle areas of activity:**Ressearch, Benchmarking and the Development of prescriptive guidance fo practitioners and business executives.</li>
+  <li><strong>Mean Time Between Failures (MTBF):</strong> The average time between failures of the asset.</li>
+  <li><strong>Mean Time To Repair (MTTR):</strong> The average time it takes to restore service once an asset has failed or dropped below acceptable service levels.</li>
+  <li><strong>Request For Change (RFC):</strong> A formally submitted document, or electronic record, that identifies the relevant information surrounding the desired change.</li>
+  <li><strong>Revision Control System (RCS):</strong> An application that tracks versions of files or potentially another form of data through the use of access and check-in/check-out controls. Depending on the system, a baseline with subsequent differentials may be tracked or each new version is stored and assigned a unique ID.</li>
+  <li><strong>Shelf Life/Release Shelf Life (RSL):</strong> Defines how long a build will remain viable before becoming obsolete.</li>
+  <li><strong>Standard Change:</strong> Changes with readily known risks that are regularly made during the course of business, and whose outcomes are predictable.</li>
+</ul>
+
+  		
+	  </article>
+
+  </div>
+
+
+
+</div>
+
+
+<div class="article-author">
+    <div class="avatar">
+    <img width="50" height="50" src="https://gravatar.com/avatar/111?s=50" alt=" Avatar"style="display:none" />
+    </div>
+    <div class="name">
+        <h4>Author: <b>John Wang</b></h4>
+    </div>
+</div>
+
+
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'grokify';
+    var disqus_identifier = '/operations-glossary';
+	(function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </body>
+</html>

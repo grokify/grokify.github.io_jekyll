@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Performance is a Feature</title>
+
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="
+
+The phrase “Performance is a Feature” has been growing in popularity.
+
+">
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <!-- twitter meta -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@lauriswat" />
+    <meta name="twitter:title" content="Performance is a Feature" />
+    <meta name="twitter:description" content="
+
+The phrase “Performance is a Feature” has been growing in popularity.
+
+" />
+    <meta name="twitter:url" content="https://grokify.github.io/performance-is-a-feature" />
+    
+
+    <!-- google -->
+    <link rel="author" href="https://plus.google.com/u/1/106958955611683589420/posts"/>
+    <link rel="publisher" href="https://plus.google.com/u/1/106958955611683589420"/>
+    
+    
+
+    <link rel="canonical" href="https://grokify.github.io/performance-is-a-feature">
+    <link rel="icon" type="image/png" href="/images/lambda-xl.png">
+
+    <!-- Custom CSS -->
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/syntax.css">
+    <link rel="stylesheet" href="/css/lambda.css?v2.1">
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-32022445-1', 'auto');
+        ga('send', 'pageview');
+
+        var host = "lauris.github.io";
+        if ((host == window.location.host) && (window.location.protocol != "https:")) {
+            window.location.protocol = "https";
+        }
+    </script>
+
+</head>
+
+
+    <body>
+    
+    <div class="wrapper">
+
+      <header id="main-header">
+  <div id="site-title">
+    <i class="fa fa-rebel" style="font-size:150%"></i>
+    <a href="/">Grokify by John Wang</a>
+  </div>
+  <div class="links">
+  
+  <a href="/" class="page-link">Blog</a>
+  
+    
+  
+    
+      <a class="page-link"
+        href="/about/">About</a>
+    
+  
+    
+  
+    
+  
+  <a href="/feed.xml" target="_blank" class="page-link">RSS</a>
+  <a href="http://twitter.com/grokify" target="_blank" class="page-link">Twitter</a>
+  <a href="http://github.com/grokify/lauris.github.com"
+    target="_blank"
+    class="page-link github-link">
+    <i class="fa fa-github"></i>
+    Source</a>
+  </div>
+</header>
+
+      
+      <div id="content">
+        <div id="articles">
+          <div class="article-list">
+            <div class="entry">
+
+	<div class="entry-content">
+
+	  <header>
+	    <h1 class="entry-title"><a href="/performance-is-a-feature">Performance is a Feature</a></h1>
+	    <p class="entry-meta">Oct 4, 2011</p>
+	  </header>
+
+	  <article class="entry-body">
+	  	
+	  		<!-- ## Singing the Praises of the Unsung Hero -->
+
+<p>The phrase “Performance is a Feature” has been growing in popularity.</p>
+
+<!-- more -->
+
+<p>Lately, it’s importance for me is underlined by the fact the most common response I get from showing off my early-stage mailing list archive, <a href="http://grokbase.com">Grokbase</a>, is that “it’s fast.” I first heard this idea similarly phrased in <a href="http://mashable.com/2011/03/24/think-quarterly/">Google’s Think Quartlerly</a> and then in <a href="http://www.codinghorror.com/blog/2011/06/performance-is-a-feature.html">Jeff Atwood’s Coding Horror</a> which was <a href="http://news.ycombinator.com/item?id=2676673">covered on Hacker News</a>. <a href="https://plus.google.com/111345372994173159594">Matt Brittin</a>, managing director of Google for UK and IE ops said it like this:</p>
+
+<blockquote>
+  <p>At Google, we often think that speed is the forgotten ‘killer application’ – the ingredient that can differentiate winners from the rest. We know that the faster we deliver results, the more useful people find our service.</p>
+</blockquote>
+
+<p>I’ve worked in some high-performance environments (enterprise search for billion+ document archives) and written benchmark reports so I know performance is important; however, this got me thinking, sure “we” (those in the know) know that performance is important, but what about the meta-question, why is it important to say it is important?</p>
+
+<h2 id="motivation">Motivation</h2>
+
+<p>For me, the strongest reason for talking about Performance as a Feature is that it can help motivate and focus development. This is important because performance can be vitally important and yet be difficult to achieve and result in little to show using metrics such as lines of code and visible features. Indeed, a product screen shot can look exactly the same after a 100x speed up.</p>
+
+<p>The reason performance can be hard to achieve is three fold.</p>
+
+<ol>
+	<li><strong>Performance is Mentally Challenging</strong><br />Often times, performance is an architectural problem-solving exercise and not the mere act of taking a requirement and executing on it. Additionally, often times you need to taken into account many domain-specific properties in order to fully optimize the system. So you may need to understand the problem space in detail, come up with a solution, and then communicate / convince others that the design should be accepted even before you get started coding.</li>
+	<li><strong>Performance is not Greenfield</strong><br />Once you come up with a good solution, often times you cannot just implement it as you are improving an existing process. The new solution needs to integrate into the existing solution and either be a drop-in replacement or change the code around it. Like repainting a car after it gets dinged, the affected code can be much larger than the immediate problem. Further, if data conversion is needed, once the new code has been implemented, the conversion process may take longer than development or deployment.</li>
+	<li><strong>Performance is Hard to See</strong><br />Finally, it can be hard to tell your peers what you accomplished if what you accomplished was a performance improvement since there is nothing to see. To complicate matters, you are not necessarily working on a new product or even a new feature. Indeed, you may be <em>just</em> speeding up someone else's creative work. That the speed-up itself is what makes the work useful at all may be hard to convey. Here, metrics tell the best story to other developers but to people using the app, it may be simply <em>fast</em>.</li>
+</ol>
+
+<h2 id="summary">Summary</h2>
+
+<p>As developers, we like to see the fruits of our labor and this often means working on new features that are visible and we can talk about. However, when talking to users, often times the first thing they notice and talk about may be your app’s performance. So when developing an app, it is important to remember, that:</p>
+
+<blockquote>
+  <p>Performance is not just any feature, it may be a killer feature.</p>
+</blockquote>
+
+<p>Have you had to implement performance features? What were the challenges you faced?</p>
+
+  		
+	  </article>
+
+  </div>
+
+
+
+</div>
+
+
+<div class="article-author">
+    <div class="avatar">
+    <img width="50" height="50" src="https://gravatar.com/avatar/111?s=50" alt=" Avatar"style="display:none" />
+    </div>
+    <div class="name">
+        <h4>Author: <b>John Wang</b></h4>
+    </div>
+</div>
+
+
+    <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'grokify';
+    var disqus_identifier = '/performance-is-a-feature';
+	(function() {
+	    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+	    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+	    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    </body>
+</html>
