@@ -5,15 +5,87 @@
     <description>Personal blog about product management, engineering, hacking, open-source, startups, etc.</description>
     <link>https://grokify.github.io/</link>
     <atom:link href="https://grokify.github.io/feed.xml" rel="self" type="application/rss+xml" />
-    <pubDate>Sun, 14 Feb 2016 12:29:56 -0800</pubDate>
-    <lastBuildDate>Sun, 14 Feb 2016 12:29:56 -0800</lastBuildDate>
+    <pubDate>Sun, 27 Mar 2016 15:47:00 -0700</pubDate>
+    <lastBuildDate>Sun, 27 Mar 2016 15:47:00 -0700</lastBuildDate>
     <generator>Jekyll v2.0.3</generator>
     
       <item>
-        <title>Static Knowledgebase Idea</title>
-        <description>&lt;p&gt;I was recently thinking about developer-oriented knowledgebases and thought it would be a great idea to build a knowledgebase on a static blog engine like Jekyll or Hugo. This could be done by adding a knowledgebase layout homepage with an added search capability. I imagine a project like this could be very useful to developer projects and would love to see it developed.&lt;/p&gt;
+        <title>Stack Overflow Reputation - From 0 to 2000</title>
+        <description>&lt;p&gt;Stack Overflow is a great site for programming Q&amp;amp;A in general and a great resource for growing developer programs as well. From a developer program perspective, 2000 reputation is an ideal target since it provides the ability to edit any post, treating Stack Overflow more like a wiki, and the ability to create tags.&lt;/p&gt;
 
 &lt;!-- more --&gt;
+
+&lt;p&gt;When I was brought on as the head of Platform Product Management at RingCentral, I was also given the responsibility for building up our community efforts. I knew that we needed the ability to represent ourselves on Stack Overflow which provides the following benefits:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Community for interacting with developers&lt;/li&gt;
+  &lt;li&gt;Ability to tag for the developer program&lt;/li&gt;
+  &lt;li&gt;Ability to edit and update posts for the best canonical questions&lt;/li&gt;
+  &lt;li&gt;Building skills to answer questions quickly and succinctly&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When I started at RingCentral, there were already API questions on RingCentral which I quickly went about responding to. Once that was taken care of I realized we needed a tag which is only available if you have 1500 reputation. At the time, there wasn’t any employee I was aware of with that reputation level so I went about building it myself and this is that story. The skills learned will be the subject of another article and I find them important enough that I’ve started using Stack Overflow as qualifiations for certain roles on my teams.&lt;/p&gt;
+
+&lt;p&gt;Here is a link to my Stack Exchange Network Reputation Chart to see my progress.&lt;/p&gt;
+
+&lt;h2 id=&quot;why-2000-reputation&quot;&gt;Why 2000 Reputation?&lt;/h2&gt;
+
+&lt;p&gt;For running a developer platform, 2000 is a key number because it provides two key priviledges:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Ability to create tags (1500 reputation):&lt;/strong&gt; tags are the classification method on Stack Overflow and all popular programs have them. When I started some subjects with fewer questions than RingCentral had tags so it was important to attain this. Stack Overflow is genious because along the way to 1500, one must become a valued contributor to the site with good judgement.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Ability to edit any post (2000 reputation):&lt;/strong&gt; in the open source and wiki world, anyone can edit anything within reason. 2000 is a key number because that’s when these priviledges are provided on Stack Overflow, making using the system much more fluid.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Of note, while anyone with 1500 reputation can create tags, it’s not possible to buy them so it must be earned with enough reputation to reuqire judgment for being part of the Stack Overflow community.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-to-do-it&quot;&gt;How to Do It&lt;/h2&gt;
+
+&lt;p&gt;This article provides some tips on how to get a Stack Overflow reputation of over 2000 starting from 0. When I started, I didn’t know anything about this so hopefully this will help others. There is no magic bullet and you have to put in the keyboard time, but the tips below can help you accelerate the process.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Question Velocity:&lt;/strong&gt; a good way to build up reputation is to find high velocity subject matter where lots of developers have questions. This is because most points are awarded immediately after a question is posted so it’s important to have a regular supply of new questions. Of course, to be effective, you also need to be able to answer questions in these subjects quickly. For me, this ended up being the PHP, JavaScript and RegExp tags, roughly in that order. I ended up answering a number of Python questions but did not actively seek them out. Since this is high velocity, some of the answers in this area may be simple so it’s important to be quick to provide useful answers.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;In-Depth Expertise:&lt;/strong&gt; Find some areas that have open questions for longer where you can contribute expertise. For me, this was in the OAuth and NoSQL areas. I have spent some time in both areas and they were areas where questions would stay open for longer periods of time allowing me to have time to seek them out and provide longer, more in-depth answers. Once you find a few tags like this, you can seek them out using the question filtering capabilities.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Bounties:&lt;/strong&gt; Bounties are great ways to accelerate reputation building if you know the topics or have time to do research. Establish the types of questions you are interested in performing research for.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Interests:&lt;/strong&gt; Beyond the issues above, there were some areas I have an interest in so always tried to answer some questions, however, things in this area were very opportunistic and not strategic in achieving my reputation targets. Some areas for me included trying out SDKs and APIs from other services and languages like Go.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Tenacity:&lt;/strong&gt; Finally, to support all of the above, answer anything you can. Answering many questions will quickly allow you to refine your answering style to be effective and get more repuation points, regardless of whether individual answers are rewarded or not. You will improve quickly and reach your targets before you know it.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;With the combination of the above, you will not only attain your reputation goal but you will also become a valuable member of the StackOverflow community by giving back in an appreciated manner.&lt;/p&gt;
+
+&lt;h2 id=&quot;point-fundamentals&quot;&gt;Point Fundamentals&lt;/h2&gt;
+
+&lt;p&gt;I should mention that you should answer as many questions as you can. Early on, I was under the impression you could get a maximum of 200 reputation per day which limited my contributions but later on, I realized only upvotes are limited to 200. On my best day so far, I achieved 330 reputation. A few days like that, and it’s quick to see how one can achieve 2000 reputation quickly.&lt;/p&gt;
+
+&lt;h2 id=&quot;track-record&quot;&gt;Track Record&lt;/h2&gt;
+
+&lt;p&gt;You can see my Stack Overflow network reputation chart here. My reputation started to ascend after I took on my new role.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;First few days: The first few days were spent discussing with internal staff and with Stack Overflow representatives to see if any internal engineers had enough reputation to create a tag or if we could buy one. After I realized, the questions were no to both, the next stage began.&lt;/li&gt;
+  &lt;li&gt;Initial effort: During this stage, I started answering any question possible to learn about how Stack Overflow worked. This included some trial and error where I was guided towards more useful answer formats.&lt;/li&gt;
+  &lt;li&gt;Lull period: During this period, other job responsibilities took hold which I had to prioritize.&lt;/li&gt;
+  &lt;li&gt;Finish line: By the time I got back to Stack Overflow, my thinking had changed and I accelerated quickly through 1000 reputation points to reach 2000. It was during this time, I realized you can get much more than 200 points per day.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;summary&quot;&gt;Summary&lt;/h2&gt;
+
+&lt;p&gt;Stack Overflow is an immensely useful tool for developer relations teams. 2000 reputation is a practical target and is very achieveable with the right mindset towards contribution. Over time, achieving 2000 reputation will not only make one a valuable Stack Overflow contributor but also make one good at resolving issues to conclusion without synchronous interaction, a huge benefit to developer relations and developer support.&lt;/p&gt;
+</description>
+        <pubDate>Sun, 27 Mar 2016 14:26:36 -0700</pubDate>
+        <link>https://grokify.github.io/dev-relations/stack-overflow-reputation-from-0-to-2000</link>
+        <guid isPermaLink="true">https://grokify.github.io/dev-relations/stack-overflow-reputation-from-0-to-2000</guid>
+        
+        
+      </item>
+    
+      <item>
+        <title>Static Knowledgebase Idea</title>
+        <description>&lt;p&gt;I was recently thinking about developer-oriented knowledgebases and thought it would be a great idea to build a knowledgebase on a static documentation engine like &lt;a href=&quot;http://www.mkdocs.org/&quot;&gt;MkDocs&lt;/a&gt; or &lt;a href=&quot;http://www.sphinx-doc.org/&quot;&gt;Sphinx&lt;/a&gt;. I imagine a project like this could be very useful to developer projects and would love to see it developed.&lt;/p&gt;
+
+&lt;!-- more --&gt;
+
+&lt;p&gt;This could be done by adding a knowledgebase layout homepage with an added search capability to build out a service similar to Desk.com or Zendesk. Of course, it would be nice for those services to automatically take in data from sites like GitHub as well.&lt;/p&gt;
 
 &lt;h2 id=&quot;navigation&quot;&gt;Navigation&lt;/h2&gt;
 
@@ -22,6 +94,8 @@
 &lt;h2 id=&quot;search&quot;&gt;Search&lt;/h2&gt;
 
 &lt;p&gt;At this time &lt;a href=&quot;https://www.algolia.com/&quot;&gt;Algolia&lt;/a&gt; provides free search for up to 10,000 records and 100,000 operations per month. That’s more than enough for sites to get started and popular sites can sign up for Algolia’s paid plans.&lt;/p&gt;
+
+&lt;p&gt;Of note, Algolia does build a &lt;a href=&quot;https://github.com/algolia/algoliasearch-jekyll&quot;&gt;Jekyll plugin&lt;/a&gt; so this could be similar but for MkDocs or Sphinx.&lt;/p&gt;
 
 &lt;h2 id=&quot;authoring-and-version-control&quot;&gt;Authoring and Version Control&lt;/h2&gt;
 
@@ -618,29 +692,6 @@ Listen 443
         
         
         <category>security</category>
-        
-      </item>
-    
-      <item>
-        <title>Bitcoin Is Now Supported in Encode::Base58::GMP</title>
-        <description>&lt;p&gt;Base58 is a human-readable, protocol-safe encoding useful for case-sensitive encodings in cross-application situations such as urls, databases, file systems, full-text indexes and others.&lt;/p&gt;
-
-&lt;!-- more --&gt;
-
-&lt;p&gt;It was popularized by &lt;a href=&quot;http://www.flickr.com/groups/api/discuss/72157616713786392&quot;&gt;Flickr&lt;/a&gt; and also used by &lt;a href=&quot;https://en.bitcoin.it/wiki/Base58Check_encoding&quot;&gt;Bitcoin&lt;/a&gt; and &lt;a href=&quot;http://grokbase.com&quot;&gt;Grokbase&lt;/a&gt;. Back in 2011, I open sourced Base58 libraries using the &lt;a href=&quot;http://gmplib.org/&quot;&gt;GNU MP Big Num Library (GMP)&lt;/a&gt; for &lt;a href=&quot;https://metacpan.org/module/Encode::Base58::GMP&quot;&gt;Perl&lt;/a&gt; and &lt;a href=&quot;http://rubygems.org/gems/base58_gmp&quot;&gt;Ruby&lt;/a&gt; to create Base58 encodings. At the time, the Ruby library supported Bitcoin, Flickr and GMP alphabets while the Perl library only supported the Flickr and GMP alphabets. With &lt;a href=&quot;https://metacpan.org/module/Encode::Base58::GMP&quot;&gt;Encode:Base58::GMP&lt;/a&gt; version 1.0, the Perl library now also supports the Bitcoin alphabet for decoding and encoding as well as conversion from and to the Flickr and GMP alphabets. Grokbase uses the Flickr alphabet so there’s no need for a separate library in the code.&lt;/p&gt;
-
-&lt;p&gt;In addition to Bitcoin support, the Perl library has now added a base58_from_to() function to generically transcode Base58 strings and has updated the md5_base58() function to create strings padded with leading zero values. The change to md5_base58() is not backward compatible so this is something to consider for an upgrade.&lt;/p&gt;
-
-&lt;p&gt;For a bit of background, the reason &lt;a href=&quot;https://metacpan.org/module/Encode::Base58::GMP&quot;&gt;Encode::Base58::GMP&lt;/a&gt; did not support Bitcoin in earlier releases is that I utilize the transliteration operator for the conversion and Perl does not support variables with the transliteration operator which I was using for implmentations in other languages at the time (Ruby, PHP, and Python). At the time, I didn’t find a solution to this other than hand-writing each conversion which I wanted to avoid so I left it out. Coincident to the recent Bitcoin activity, a &lt;a href=&quot;https://rt.cpan.org/Public/Bug/Display.html?id=84565&quot;&gt;bug report&lt;/a&gt; and &lt;a href=&quot;http://johnwang.com/base58-fast-hashing-with-gmp/&quot;&gt;blog comment&lt;/a&gt; were posted requesting this feature so I decided to look at this again. This time, I found the Perl solution is to use &lt;a href=&quot;http://www.perlmonks.org/?node_id=445971&quot;&gt;eval&lt;/a&gt; with optional pre-compile. I implemented the eval which looked clean but, in the end, I decided to release the hardcoded tr version.&lt;/p&gt;
-
-&lt;p&gt;Thanks to the Perl community for &lt;a href=&quot;https://metacpan.org/&quot;&gt;Metacpan&lt;/a&gt;, &lt;a href=&quot;https://rt.cpan.org/&quot;&gt;RT&lt;/a&gt;, &lt;a href=&quot;http://dzil.org/&quot;&gt;Distzilla&lt;/a&gt; and &lt;a href=&quot;http://www.cpantesters.org/distro/E/Encode-Base58-GMP.html#Encode-Base58-GMP-1.00&quot;&gt;CPAN Testers&lt;/a&gt; for making this update easy. Also thanks to Ingy for writing &lt;a href=&quot;https://metacpan.org/module/Test::Base&quot;&gt;Test::Base&lt;/a&gt; which makes Data Driven Testing a pleasure. If you are interested in Test::Base, this distribution includes an example of using external files in “t/03_md5-base58.t”.&lt;/p&gt;
-
-&lt;p&gt;Version 1.00 is now on CPAN so have fun.&lt;/p&gt;
-</description>
-        <pubDate>Thu, 02 May 2013 17:10:00 -0700</pubDate>
-        <link>https://grokify.github.io/bitcoin/now-supported-in-encode-base58-gmp</link>
-        <guid isPermaLink="true">https://grokify.github.io/bitcoin/now-supported-in-encode-base58-gmp</guid>
-        
         
       </item>
     
