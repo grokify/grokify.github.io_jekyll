@@ -1,9 +1,23 @@
-```php
 
+## SMS
+
+```php
+$apiResponse = $sdk->platform()->post('/account/~/extension/~/sms', array(
+    'from' => array('phoneNumber' => 'your-ringcentral-sms-number'),
+    'to'   => array(
+        array('phoneNumber' => 'mobile-number'),
+    ),
+    'text' => 'Test from PHP',
+));
+```
+
+## Fax
+
+```php
 $request = $rcsdk->createMultipartBuilder()
                  ->setBody(array(
-                     'to'         => array(
-                         array('phoneNumber' => '16501112233  '),
+                     'to' => array(
+                         array('phoneNumber' => '16501112233'),
                      ),
                      'faxResolution' => 'High',
                  ))
@@ -12,5 +26,4 @@ $request = $rcsdk->createMultipartBuilder()
                  ->request('/account/~/extension/~/fax'); // also has optional $method argument
 
 $response = $platform->sendRequest($request);
-
 ```
