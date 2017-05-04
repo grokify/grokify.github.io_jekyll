@@ -1,10 +1,19 @@
+## Voice
+
+```php
+$apiResponse = $sdk->platform()->post('/account/~/extension/~/ringout', array(
+    'from' => array('phoneNumber' => 'your-ringcentral-sms-number'),
+    'to' => array('phoneNumber' => 'mobile-number'),
+    'playPrompt' => true
+));
+```
 
 ## SMS
 
 ```php
 $apiResponse = $sdk->platform()->post('/account/~/extension/~/sms', array(
     'from' => array('phoneNumber' => 'your-ringcentral-sms-number'),
-    'to'   => array(
+    'to' => array(
         array('phoneNumber' => 'mobile-number'),
     ),
     'text' => 'Test from PHP',
