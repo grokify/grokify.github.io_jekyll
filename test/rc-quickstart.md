@@ -23,9 +23,9 @@ $apiResponse = $sdk->platform()->post('/account/~/extension/~/sms', array(
 ```js
 rcsdk.platform()
     .post('/account/~/extension/~/sms', {
-        from: {phoneNumber:'+12223334444'}, // Your sms-enabled phone number
+        from: {phoneNumber:'+12223334444'},
         to: [
-            {phoneNumber:'+15556667777'} // Second party's phone number
+            {phoneNumber:'+15556667777'}
         ],
         text: 'Message content'
     })
