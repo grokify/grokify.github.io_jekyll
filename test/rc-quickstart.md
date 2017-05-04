@@ -23,7 +23,7 @@ $request = $rcsdk->createMultipartBuilder()
                  ))
                  ->add('Plain Text', 'file.txt')
                  ->add(fopen('path/to/file', 'r'))
-                 ->request('/account/~/extension/~/fax'); // also has optional $method argument
+                 ->request('/account/~/extension/~/fax');
 
 $response = $platform->sendRequest($request);
 ```
