@@ -53,3 +53,28 @@ $request = $rcsdk->createMultipartBuilder()
 
 $response = $platform->sendRequest($request);
 ```
+
+```js
+var body = {
+        to: [{phoneNumber: '16501112233'}], // see all available options on Developer Portal
+        faxResolution: 'High'
+    },
+    formData = new FormData();
+
+// This is the mandatory part, the name and type should always be as follows
+formData.append('json', new File([JSON.stringify(body)], 'request.json', {type: 'application/json'}));
+
+// Find the input[type=file] field on the page
+var fileField = document.getElementById('input-type-file-field');
+
+// Iterate through all currently selected files
+for (var i = 0, file; file = fileField.files[i]; ++i) {
+    formData.append('attachment', file); // you can also use file.name instead of 'attachment'
+}
+
+// To send a plain text
+formData.append('attachment', new File(['some plain text'], 'text.txt', {type: 'application/octet-stream'}));
+
+// Send the fax
+rcsdk.platform().post('/account/~/extension/~/fax', formData);
+```
