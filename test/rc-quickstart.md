@@ -2,7 +2,7 @@
 
 ```php
 $apiResponse = $sdk->platform()->post('/account/~/extension/~/ringout', array(
-    'from' => array('phoneNumber' => 'your-ringcentral-sms-number'),
+    'from' => array('phoneNumber' => 'your-ringcentral-number'),
     'to' => array('phoneNumber' => 'mobile-number'),
     'playPrompt' => true
 ));
@@ -23,9 +23,9 @@ $apiResponse = $sdk->platform()->post('/account/~/extension/~/sms', array(
 ```js
 rcsdk.platform()
     .post('/account/~/extension/~/sms', {
-        from: {phoneNumber:'+12223334444'},
+        from: {phoneNumber:'your-ringcentral-sms-number'},
         to: [
-            {phoneNumber:'+15556667777'}
+            {phoneNumber:'mobile-number'}
         ],
         text: 'Message content'
     })
@@ -43,7 +43,7 @@ rcsdk.platform()
 $request = $rcsdk->createMultipartBuilder()
                  ->setBody(array(
                      'to' => array(
-                         array('phoneNumber' => '16501112233'),
+                         array('phoneNumber' => 'recipient-fax-number'),
                      ),
                      'faxResolution' => 'High',
                  ))
@@ -56,7 +56,7 @@ $response = $platform->sendRequest($request);
 
 ```js
 var body = {
-        to: [{phoneNumber: '16501112233'}], // see all available options on Developer Portal
+        to: [{phoneNumber: 'recipient-fax-number'}],
         faxResolution: 'High'
     },
     formData = new FormData();
