@@ -1,5 +1,5 @@
 Date | Event | Title
 -----|-------|------
-Mar 13, 2017 | [Botness Enterprise](http://enterprise.botness.org/) | [Building Developer Friendly Enterprise Bots](http://dispatch.message.io/building-developer-friendly-enterprise-bot-businesses/)
+Mar 13, 2017 | [Botness Enterprise](http://enterprise.botness.org/) | [Building Developer Friendly Enterprise Bots](http://dispatch.message.io/building-developer-friendly-enterprise-bot-businesses/) ([YouTube](https://www.youtube.com/watch?v=cJGGecvefyc))
 Feb 24, 2016 | DEV-TO-DEV SUMMIT 2016 | [RingCentral Case Study: Community-Driven Developer Evangelism](https://speakerdeck.com/grokify/community-evangelism)
 Oct 13, 2009 | Oracle Open World 2009 | Drive Information Governance and Significant Cost Savings with E-Mail Archiving
