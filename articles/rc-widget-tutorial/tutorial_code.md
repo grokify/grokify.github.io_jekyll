@@ -154,8 +154,9 @@ Create new Salesforce app, add a Open CTI Softphone to its utility bar. Launch t
 
 ## Salesforce Lightning integration - Inbound Screen Pop - 1
 
-Create an Apex class named “RCPhoneHelper”:
+Create an Apex class named `RCPhoneHelper`:
 
+```js
   global class RCPhoneHelper {
     webService static Contact searchContact(String phone) {
         List<List<SObject>> l = [FIND :phone IN PHONE FIELDS RETURNING Contact(Id limit 1)];
@@ -165,11 +166,13 @@ Create an Apex class named “RCPhoneHelper”:
         return null;
     }
 }
+```
 
 ---
 
-Salesforce Lightning integration - Inbound Screen Pop - 2
+## Salesforce Lightning integration - Inbound Screen Pop - 2
 
+```
 function receiveMessage(event) {
     if(event.data.type === 'rc-call-ring-notify') {
         sforce.opencti.setSoftphonePanelVisibility({ visible: true });
@@ -189,6 +192,7 @@ function receiveMessage(event) {
     } 
 }
 window.addEventListener("message", receiveMessage, false);
+```
 
 ---
 
