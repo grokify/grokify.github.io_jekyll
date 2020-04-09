@@ -84,3 +84,5 @@ Certificate fingerprint (SHA-256): 06:87:26:03:31:A7:24:03:D9:09:F1:05:E6:9B:CF:
 ## Uninstall Java Tool
 
 https://www.java.com/en/download/uninstalltool.jsp
+
+Java `1.8.191.12` .
