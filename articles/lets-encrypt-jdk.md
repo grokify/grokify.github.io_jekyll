@@ -50,6 +50,11 @@ http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/tags
 
 ## JDK Version to Check
 
+### OpenJDK Downloads
+
+https://adoptopenjdk.net/index.html
+https://mirrors.huaweicloud.com/java/jdk/
+
 ### Java Version
 
 ```
