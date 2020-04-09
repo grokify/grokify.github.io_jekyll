@@ -26,16 +26,19 @@ Java™ SE Development Kit 8, Update 101 (JDK 8u101)
 
 https://www.oracle.com/technetwork/java/javase/8all-relnotes-2226344.html
 
-> IdenTrust DST Root CA X3
-> alias: identrustdstx3
-> DN: CN=DST Root CA X3, O=Digital Signature Trust Co.
-> See [JDK-8154757](https://bugs.openjdk.java.net/browse/JDK-8154757)
+```
+IdenTrust DST Root CA X3
+alias: identrustdstx3
+DN: CN=DST Root CA X3, O=Digital Signature Trust Co.
+See [JDK-8154757](https://bugs.openjdk.java.net/browse/JDK-8154757)
+```
 
 JDK-8154757 includes:
 
-> CN = DST Root CA X3
-> O = Digital Signature Trust Co.
-> Key Size: 2048-bit RSA
-> Serial: ‎44 af b0 80 d6 a3 27 ba 89 30 39 86 2e f8 40 6b
-
+```
+CN = DST Root CA X3
+O = Digital Signature Trust Co.
+Key Size: 2048-bit RSA
+Serial: ‎44 af b0 80 d6 a3 27 ba 89 30 39 86 2e f8 40 6b
+```
 
