@@ -20,7 +20,7 @@ Serial Number: 0A 01 41 42 00 00 01 53 85 73 6A 0B 85 EC A7 08
 Fingerprint SHA-256: 25 84 7D 66 8E B4 F0 4F DD 40 B1 2B 6B 07 40 C5 67 DA 7D 02 43 08 EB 6C 2C 96 FE 41 D9 DE 21 8D
 ```
 
-## JDK Version
+## JDK Version Included
 
 Java™ SE Development Kit 8, Update 101 (JDK 8u101)
 
@@ -40,5 +40,44 @@ CN = DST Root CA X3
 O = Digital Signature Trust Co.
 Key Size: 2048-bit RSA
 Serial: ‎44 af b0 80 d6 a3 27 ba 89 30 39 86 2e f8 40 6b
+```
+
+## JDK Version to Check
+
+Java Builds:
+
+http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/tags
+
+## JDK Version to Check
+
+### Java Version
+
+```
+$ java -version
+java version "12.0.2" 2019-07-16
+Java(TM) SE Runtime Environment (build 12.0.2+10)
+Java HotSpot(TM) 64-Bit Server VM (build 12.0.2+10, mixed mode, sharing)
+```
+
+### Keytool
+
+```
+$ which java
+$ which keytool
+$ ls -al /usr/bin/keytool
+/usr/bin/keytool -> /System/Library/Frameworks/JavaVM.framework/Versions/Current/Commands/keytool
+```
+
+#### List Certss
+
+```
+$ keytool -cacerts -list
+```
+
+`identrustdstx3` cert
+
+```
+identrustdstx3 [jdk], Nov 30, 2017, trustedCertEntry, 
+Certificate fingerprint (SHA-256): 06:87:26:03:31:A7:24:03:D9:09:F1:05:E6:9B:CF:0D:32:E1:BD:24:93:FF:C6:D9:20:6D:11:BC:D6:77:07:39
 ```
 
