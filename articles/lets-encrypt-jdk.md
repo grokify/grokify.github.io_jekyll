@@ -81,3 +81,6 @@ identrustdstx3 [jdk], Nov 30, 2017, trustedCertEntry,
 Certificate fingerprint (SHA-256): 06:87:26:03:31:A7:24:03:D9:09:F1:05:E6:9B:CF:0D:32:E1:BD:24:93:FF:C6:D9:20:6D:11:BC:D6:77:07:39
 ```
 
+## Uninstall Java Tool
+
+https://www.java.com/en/download/uninstalltool.jsp
