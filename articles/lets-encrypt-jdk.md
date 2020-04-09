@@ -46,14 +46,14 @@ Serial: ‎44 af b0 80 d6 a3 27 ba 89 30 39 86 2e f8 40 6b
 
 Java Builds:
 
-http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/tags
+* http://hg.openjdk.java.net/jdk8u/jdk8u/hotspot/tags
 
 ## JDK Version to Check
 
 ### OpenJDK Downloads
 
-https://adoptopenjdk.net/index.html
-https://mirrors.huaweicloud.com/java/jdk/
+* https://adoptopenjdk.net/index.html
+* https://mirrors.huaweicloud.com/java/jdk/
 
 ### Java Version
 
